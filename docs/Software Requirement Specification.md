@@ -136,17 +136,38 @@ date created
 
 *Describe the logical characteristics of each interface between the software product and the users. This may include sample screen images, any GUI standards or product family style guides that are to be followed, screen layout constraints, standard buttons and functions (e.g., help) that will appear on every screen, keyboard shortcuts, error message display standards, and so on. Define the software components for which a user interface is needed. Details of the user interface design should be documented in a separate user interface specification.*
 
+- **For students:**
+    - **Sign Up Page:** Provides required fields for registeration.
+    - **Login Page:** Provides required fields to log in.
+    - **Homepage:** Allows students to select game modes for flashcard practice.
+    - **Gameplay:** Testing students with gamified experiences. The algorithm will show difficult card more often.
+- **For teachers:**
+    - **Sign Up Page:** Provides required fields for registeration.
+    - **Login Page:** Provides required fields to log in.
+    - **Home Page:** Displays options for accessing flashcard sets and student profiles.
+    - **Flashcard Sets:** Shows multiple flashcard sets. Allow to create, edit, delete.
+    - **Student Profiles:** Shows multiple student profiles. Allow to view results, add students.
+
+
 ### 4.2. Hardware Interfaces
 
 *Describe the logical and physical characteristics of each interface between the software product and the hardware components of the system. This may include the supported device types, the nature of the data and control interactions between the software and the hardware, and communication protocols to be used.*
+
+The application is designed to run on any device with a web browser, including desktop computers, laptops, tablets, and smartphones.
 
 ### 4.3. Software Interfaces
 
 *Describe the connections between this product and other specific software components (name and version), including databases, operating systems, tools, libraries, and integrated commercial components. Identify the data items or messages coming into the system and going out and describe the purpose of each. Describe the services needed and the nature of communications. Refer to documents that describe detailed application programming interface protocols. Identify data that will be shared across software components. If the data sharing mechanism must be implemented in a specific way (for example, use of a global data area in a multitasking operating system), specify this as an implementation constraint.*
 
+- **Web Browser Compatibility:** The application is compatible with major web browsers such as Google Chrome, Mozilla Firefox, Safari, Microsoft Edges.
+- **Database Integration:** The application interfaces with a database system to store user account information, flashcard sets, user progress and other relevant data.
+
 ### 4.4. Communication Interfaces
 
 *Describe the requirements associated with any communications functions required by this product, including e-mail, web browser, network server communications protocols, electronic forms, and so on. Define any pertinent message formatting. Identify any communication standards that will be used, such as FTP or HTTP. Specify any communication security or encryption issues, data transfer rates, and synchronization mechanisms.*
+
+- **Data Transfer:** : Uses HTTPS for secure communication between the clients and servers.
+- **User Authentication:** Implements simple login functionality for secure access to user accounts.
 
 ## 5. Other Nonfunctional Requirements
 
