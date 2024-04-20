@@ -97,7 +97,9 @@ Three main user classes are: "Manager", "Teacher" and "Student".
 ### 2.4. Operating Environment
 
 *Describe the environment in which the software will operate, including the hardware platform, operating system and versions, and any other software components or applications with which it must peacefully coexist.*
-The application should be accessible on devices commonly used in kindergartens, such as tablets or dedicated learning stations through a web browser with internet access.  
+The application should be accessible on devices commonly used in kindergartens, such as tablets or dedicated learning stations through a web browser with internet access. 
+
+**Web browsers**: Google Chrome, Mozilla Firefox, Safari, Microsoft Edges.
 ### 2.5. Design and Implementation Constraints
 
 *Describe any items or issues that will limit the options available to the developers. These might include: corporate or regulatory policies; hardware limitations (timing requirements, memory requirements); interfaces to other applications; specific technologies, tools, and databases to be used; parallel operations; language requirements; communications protocols; security considerations; design conventions or programming standards (for example, if the customer’s organization will be responsible for maintaining the delivered software).*
