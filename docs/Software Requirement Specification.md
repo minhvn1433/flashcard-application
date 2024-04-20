@@ -137,16 +137,14 @@ date created
 *Describe the logical characteristics of each interface between the software product and the users. This may include sample screen images, any GUI standards or product family style guides that are to be followed, screen layout constraints, standard buttons and functions (e.g., help) that will appear on every screen, keyboard shortcuts, error message display standards, and so on. Define the software components for which a user interface is needed. Details of the user interface design should be documented in a separate user interface specification.*
 
 - **For students:**
-    - **Sign Up Page:** Provides required fields for registeration.
     - **Login Page:** Provides required fields to log in.
     - **Homepage:** Allows students to select game modes for flashcard practice.
     - **Gameplay:** Testing students with gamified experiences. The algorithm will show difficult card more often.
 - **For teachers:**
-    - **Sign Up Page:** Provides required fields for registeration.
     - **Login Page:** Provides required fields to log in.
     - **Home Page:** Displays options for accessing flashcard sets and student profiles.
     - **Flashcard Sets:** Shows multiple flashcard sets. Allow to create, edit, delete.
-    - **Student Profiles:** Shows multiple student profiles. Allow to view results, add students.
+    - **Student Profiles:** Shows multiple student profiles. Allow to view results, add and remove students.
 
 
 ### 4.2. Hardware Interfaces
