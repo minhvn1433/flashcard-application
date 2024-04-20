@@ -114,6 +114,7 @@ date created
 *Provide a short description of the feature and indicate whether it is of High, Medium, or Low priority. You could also include specific priority component ratings, such as benefit, penalty, cost, and risk (each rated on a relative scale from a low of 1 to a high of 9).*
 
 Description: A security measure that requires users to provide their credentials to authenticate and authorize individuals, ensuring only authorized users can access the system.
+
 Priority level: High
 
 #### 3.1.2. Stimulus/Response Sequences
@@ -121,8 +122,11 @@ Priority level: High
 *List the sequences of user actions and system responses that stimulate the behavior defined for this feature. These will correspond to the dialog elements associated with use cases.*
 
 User Action: The user navigates to the login page.
+
 System Response: The system presents the login form asking for username and password.
+
 User Action: The user enters their username and password and submits the form.
+
 System Response: The system validates the entered credentials.
 
 #### 3.1.3. Functional Requirements
@@ -142,15 +146,22 @@ If the credentials are incorrect, the system shows an error message. If the cred
 
 #### 3.1.1. Description and Priority
 
-Description: Manage flashcards is a feature that allows managers to create and add new flashcards or edit/remove existing flashcards to the study set. Priority level: High.
+Description: Manage flashcards is a feature that allows managers to create and add new flashcards or edit/remove existing flashcards to the study set. 
+
+Priority level: High.
 
 #### 3.1.2. Stimulus/Response Sequences
 
 User Action: User navigates to the “Manage Flashcards” section.
+
 System Response: Displays the existing flashcards in the collection.
+
 User Action: User selects the "Add New Flashcard" or "Edit Flashcards" or "Delete Flashcards" option.
+
 System Response: Presents a form for the user to input the picture and its corresponding meaning for the new flashcard or the existing flashcard, or remove the flashcard temporarily.
+
 User Action: User makes changes and confirms.
+
 System Response: Validates the input and adds/updates/removes the flashcard to/from the collection.
 
 #### 3.1.3. Functional Requirements
