@@ -103,7 +103,7 @@ The application should be accessible on devices commonly used in kindergartens, 
 ### 2.5. Design and Implementation Constraints
 
 *Describe any items or issues that will limit the options available to the developers. These might include: corporate or regulatory policies; hardware limitations (timing requirements, memory requirements); interfaces to other applications; specific technologies, tools, and databases to be used; parallel operations; language requirements; communications protocols; security considerations; design conventions or programming standards (for example, if the customer’s organization will be responsible for maintaining the delivered software).*
-
+- Flashcard application requires a connection for full functionality of the application. If a connection is lost during an active session the outcome may result in viewing only the data the application has currently downloaded on the physical device. Full functionality of the application will resume upon reconnection.
 - Interface design needs to be simple and user-friendly for young children, potentially limiting some interaction complexity.
 - Project budget might affect or limit the functionalities of the application.
 - Time constraints might limit the number of features of the application.
