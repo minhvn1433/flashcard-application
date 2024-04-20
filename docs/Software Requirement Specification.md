@@ -107,15 +107,23 @@ date created
 
 *This template illustrates organizing the functional requirements for the product by system features, the major services provided by the product. You may prefer to organize this section by use case, mode of operation, user class, object class, functional hierarchy, or combinations of these, whatever makes the most logical sense for your product.*
 
-### 3.1. System Feature 1
+### 3.1. Login system
 
 #### 3.1.1. Description and Priority
 
 *Provide a short description of the feature and indicate whether it is of High, Medium, or Low priority. You could also include specific priority component ratings, such as benefit, penalty, cost, and risk (each rated on a relative scale from a low of 1 to a high of 9).*
 
+Description: A security measure that requires users to provide their credentials to authenticate and authorize individuals, ensuring only authorized users can access the system.
+Priority level: High
+
 #### 3.1.2. Stimulus/Response Sequences
 
 *List the sequences of user actions and system responses that stimulate the behavior defined for this feature. These will correspond to the dialog elements associated with use cases.*
+
+User Action: The user navigates to the login page.
+System Response: The system presents the login form asking for username and password.
+User Action: The user enters their username and password and submits the form.
+System Response: The system validates the entered credentials.
 
 #### 3.1.3. Functional Requirements
 
@@ -123,8 +131,11 @@ date created
 
 *Each requirement should be uniquely identified with a sequence number or a meaningful tag of some kind.*
 
-- *REQ-1:*
-- *REQ-2:*
+- *REQ-1:* Database Systems: These are used to store and manage data.
+- *REQ-2:* Password Encryption Methods: Should be hashed using strong algorithms to resist attacks.
+- *REQ-3:* Front-End Frameworks/Libraries: To help build the user interface of the system.
+
+If the credentials are incorrect, the system shows an error message. If the credentials are correct, the system authenticates the user and initiates a session.
 
 ### 3.2. System Feature 2
 
