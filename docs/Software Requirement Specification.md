@@ -134,12 +134,29 @@ System Response: The system validates the entered credentials.
 - *REQ-1:* Database Systems: These are used to store and manage data.
 - *REQ-2:* Password Encryption Methods: Should be hashed using strong algorithms to resist attacks.
 - *REQ-3:* Front-End Frameworks/Libraries: To help build the user interface of the system.
+- *REQ-4:* Authentication: Tools for managing user authentication
 
 If the credentials are incorrect, the system shows an error message. If the credentials are correct, the system authenticates the user and initiates a session.
 
-### 3.2. System Feature 2
+### 3.2. Manage flashcards
 
-*And so on*
+#### 3.1.1. Description and Priority
+
+Description: Manage flashcards is a feature that allows managers to create and add new flashcards or edit/remove existing flashcards to the study set. Priority level: High.
+
+#### 3.1.2. Stimulus/Response Sequences
+
+User Action: User navigates to the “Manage Flashcards” section.
+System Response: Displays the existing flashcards in the collection.
+User Action: User selects the "Add New Flashcard" or "Edit Flashcards" or "Delete Flashcards" option.
+System Response: Presents a form for the user to input the picture and its corresponding meaning for the new flashcard or the existing flashcard, or remove the flashcard temporarily.
+User Action: User makes changes and confirms.
+System Response: Validates the input and adds/updates/removes the flashcard to/from the collection.
+
+#### 3.1.3. Functional Requirements
+
+- *REQ-1:* Database Systems: These are used to store and manage data.
+- *REQ-2:* Front-End Frameworks/Libraries: To help build the user interface of the system.
 
 ## 4. External Interface Requirements
 
