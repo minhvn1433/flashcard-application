@@ -180,8 +180,6 @@ Access to the database shall be granted to students, teachers and managers only.
 
 *Specify any additional quality characteristics for the product that will be important to either the customers or the developers. Some to consider are: adaptability, availability, correctness, flexibility, interoperability, maintainability, portability, reliability, reusability, robustness, testability, and usability. Write these to be specific, quantitative, and verifiable when possible. At the least, clarify the relative preferences for various attributes, such as ease of use over ease of learning.*
 
-- Availability: The application should work offline.
-
 - Correctness: The system should correctly link two sides of a flashcard.
 
 - Portability: The system should be easily transfered to other servers.
