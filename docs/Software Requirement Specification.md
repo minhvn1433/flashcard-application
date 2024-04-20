@@ -57,6 +57,8 @@ date created
 
 *Identify the product whose software requirements are specified in this document, including the revision or release number. Describe the scope of the product that is covered by this SRS, particularly if this SRS describes only part of the system or a single subsystem.*
 
+The purpose of this document is to build a digital flashcard system to improve the process of learning and teaching new words, replace the old system using paper.
+
 ### 1.2. Document Conventions
 
 *Describe any standards or typographical conventions that were followed when writing this SRS, such as fonts or highlighting that have special significance. For example, state whether priorities  for higher-level requirements are assumed to be inherited by detailed requirements, or whether every requirement statement is to have its own priority.*
@@ -65,9 +67,13 @@ date created
 
 *Describe the different types of reader that the document is intended for, such as developers, project managers, marketing staff, users, testers, and documentation writers. Describe what the rest of this SRS contains and how it is organized. Suggest a sequence for reading the document, beginning with the overview sections and proceeding through the sections that are most pertinent to each reader type.*
 
+This document is intended for developers, project manager as well as the client's representative.
+
 ### 1.4. Project Scope
 
 *Provide a short description of the software being specified and its purpose, including relevant benefits, objectives, and goals. Relate the software to corporate goals or business strategies. If a separate vision and scope document is available, refer to it rather than duplicating its contents here. An SRS that specifies the next release of an evolving product should contain its own scope statement as a subset of the long-term strategic product vision.*
+
+The purpose of the flashcard system is to ease the management of flashcards, allow adding and removing new cards quickly and simultaneously, provide an easy-to-use application for students and teachers, improve the process of learning and teaching new words by pointing out the difficult words automatically. This is achieved by having a central database for the flashcards and analyzing the study process.
 
 ### 1.5. References
 
@@ -154,17 +160,31 @@ date created
 
 *If there are performance requirements for the product under various circumstances, state them here and explain their rationale, to help the developers understand the intent and make suitable design choices. Specify the timing relationships for real time systems. Make such requirements as specific as possible. You may need to state performance requirements for individual functional requirements or features.*
 
+The product shall take initial load time based on internet connection strength and hardware components of the users.
+
 ### 5.2. Safety Requirements
 
 *Specify those requirements that are concerned with possible loss, damage, or harm that could result from the use of the product. Define any safeguards or actions that must be taken, as well as actions that must be prevented. Refer to any external policies or regulations that state safety issues that affect the product’s design or use. Define any safety certifications that must be satisfied.*
+
+During the usage of the software, students may mishandle and the device. Parental supervision is recommended.
 
 ### 5.3. Security Requirements
 
 *Specify any requirements regarding security or privacy issues surrounding use of the product or protection of the data used or created by the product. Define any user identity authentication requirements. Refer to any external policies or regulations containing security issues that affect the product. Define any security or privacy certifications that must be satisfied.*
 
+Access to the database shall be granted to students, teachers and managers only. Users are identified by their accounts, which use student ID for students and shortened names for teachers and managers as usernames.
+
 ### 5.4. Software Quality Attributes
 
 *Specify any additional quality characteristics for the product that will be important to either the customers or the developers. Some to consider are: adaptability, availability, correctness, flexibility, interoperability, maintainability, portability, reliability, reusability, robustness, testability, and usability. Write these to be specific, quantitative, and verifiable when possible. At the least, clarify the relative preferences for various attributes, such as ease of use over ease of learning.*
+
+- Availability: The application should work offline.
+
+- Correctness: The system should correctly link two sides of a flashcard.
+
+- Portability: The system should be easily transfered to other servers.
+
+- Usability: The system should have a uniform look and feel across different browsers.
 
 ## 6. Other Requirements
 
