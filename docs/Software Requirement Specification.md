@@ -120,6 +120,7 @@ Assumptions:
 - Users are assumed to have basic technical literacy to navigate the application interface.
 - The application's effectiveness relies on student engagement and voluntarily.
 - The manager takes all responsibility for security and permission of the used images.
+
 Dependencies:
 - The application relies on a user management system to differentiate between manager, teacher, and student roles.
 - The application requires a secure data storage solution to maintain user information, student progress, and flashcard data.
