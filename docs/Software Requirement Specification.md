@@ -79,7 +79,7 @@ date created
 
 *Describe the context and origin of the product being specified in this SRS. For example, state whether this product is a follow-on member of a product family, a replacement for certain existing systems, or a new, self-contained product. If the SRS defines a component of a larger system, relate the requirements of the larger system to the functionality of this software and identify interfaces between the two. A simple diagram that shows the major components of the overall system, subsystem interconnections, and external interfaces can be helpful.*
 
-This self-contained product is a web application operating on an education system server.
+This self-contained product is a web application designed to run on an education system server.
 ### 2.2. Product Features
 
 *Summarize the major features the product contains or the significant functions that it performs or lets the user perform. Details will be provided in Section 3, so only a high level summary  is needed here. Organize the functions to make them understandable to any reader of the SRS. A picture of the major groups of related requirements and how they relate, such as a top level data flow diagram or a class diagram, is often effective.*
@@ -97,7 +97,7 @@ Three main user classes are: "Manager", "Teacher" and "Student".
 ### 2.4. Operating Environment
 
 *Describe the environment in which the software will operate, including the hardware platform, operating system and versions, and any other software components or applications with which it must peacefully coexist.*
-
+The application should be accessible on devices commonly used in kindergartens, such as tablets or dedicated learning stations through a web browser with internet access.  
 ### 2.5. Design and Implementation Constraints
 
 *Describe any items or issues that will limit the options available to the developers. These might include: corporate or regulatory policies; hardware limitations (timing requirements, memory requirements); interfaces to other applications; specific technologies, tools, and databases to be used; parallel operations; language requirements; communications protocols; security considerations; design conventions or programming standards (for example, if the customer’s organization will be responsible for maintaining the delivered software).*
