@@ -79,14 +79,21 @@ date created
 
 *Describe the context and origin of the product being specified in this SRS. For example, state whether this product is a follow-on member of a product family, a replacement for certain existing systems, or a new, self-contained product. If the SRS defines a component of a larger system, relate the requirements of the larger system to the functionality of this software and identify interfaces between the two. A simple diagram that shows the major components of the overall system, subsystem interconnections, and external interfaces can be helpful.*
 
+This self-contained product is a ?Window application operating on an education system server.
 ### 2.2. Product Features
 
 *Summarize the major features the product contains or the significant functions that it performs or lets the user perform. Details will be provided in Section 3, so only a high level summary  is needed here. Organize the functions to make them understandable to any reader of the SRS. A picture of the major groups of related requirements and how they relate, such as a top level data flow diagram or a class diagram, is often effective.*
 
+The application allows the manager to create flashcards using words and images. The students can then study this falshcards on the appliation. The result will be stored and made visible to the teacher. In addition, the application analize the results and repeat 
+the words that the kids could not remember.  
 ### 2.3. User Classes and Characteristics
 
 *Identify the various user classes that you anticipate will use this product. User classes may be differentiated based on frequency of use, subset of product functions used, technical expertise, security or privilege levels, educational level, or experience. Describe the pertinent characteristics of each user class. Certain requirements may pertain only to certain user classes. Distinguish the favored user classes from those who are less important to satisfy.*
 
+Three main user classes are: "Manager", "Teacher" and "Student". 
+- "Manager": manages the overall application, creating new flashcards and managing user accounts.
+- "Teacher": Views student result and identifies words that students find difficult as well as words that are easy to memorize.
+- "Student" (End User): Uses the application to learn new words through flashcards.
 ### 2.4. Operating Environment
 
 *Describe the environment in which the software will operate, including the hardware platform, operating system and versions, and any other software components or applications with which it must peacefully coexist.*
@@ -95,14 +102,28 @@ date created
 
 *Describe any items or issues that will limit the options available to the developers. These might include: corporate or regulatory policies; hardware limitations (timing requirements, memory requirements); interfaces to other applications; specific technologies, tools, and databases to be used; parallel operations; language requirements; communications protocols; security considerations; design conventions or programming standards (for example, if the customer’s organization will be responsible for maintaining the delivered software).*
 
+- Interface design needs to be simple and user-friendly for young children, potentially limiting some interaction complexity.
+- Project budget might affect or limit the functionalities of the application.
+- Time constraints might limit the number of features of the application.
 ### 2.6. User Documentation
 
 *List the user documentation components (such as user manuals, on-line help, and tutorials) that will be delivered along with the software. Identify any known user documentation delivery formats or standards.*
 
+- A PPTX file demonstrating basic usages of the application 
+- A PDF document listing the system requirements, dependencies and features 
+of the application.
 ### 2.7. Assumptions and Dependencies
 
 *List any assumed factors (as opposed to known facts) that could affect the requirements stated in the SRS. These could include third-party or commercial components that you plan to use, issues around the development or operating environment, or constraints. The project could be affected if these assumptions are incorrect, are not shared, or change. Also identify any dependencies the project has on external factors, such as software components that you intend to reuse from another project, unless they are already documented elsewhere (for example, in the vision and scope document or the project plan).*
 
+Assumptions:
+- Users are assumed to have basic technical literacy to navigate the application interface.
+- The application's effectiveness relies on student engagement and voluntarily.
+- The manager takes all responsibility for security and permission of the used images.
+Dependencies:
+- The application relies on a user management system to differentiate between manager, teacher, and student roles.
+- The application requires a secure data storage solution to maintain user information, student progress, and flashcard data.
+- The application depends on digital devices (tablets/computers) with internet access (if web-based) for students and teachers.
 ## 3. System Features
 
 *This template illustrates organizing the functional requirements for the product by system features, the major services provided by the product. You may prefer to organize this section by use case, mode of operation, user class, object class, functional hierarchy, or combinations of these, whatever makes the most logical sense for your product.*
