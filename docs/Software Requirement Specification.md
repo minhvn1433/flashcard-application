@@ -118,15 +118,15 @@ of the application.
 
 *List any assumed factors (as opposed to known facts) that could affect the requirements stated in the SRS. These could include third-party or commercial components that you plan to use, issues around the development or operating environment, or constraints. The project could be affected if these assumptions are incorrect, are not shared, or change. Also identify any dependencies the project has on external factors, such as software components that you intend to reuse from another project, unless they are already documented elsewhere (for example, in the vision and scope document or the project plan).*
 
-Assumptions:
-- Users are assumed to have basic technical literacy to navigate the application interface.
-- The application's effectiveness relies on student engagement and voluntarily.
-- The manager takes all responsibility for security and permission of the used images.
+- Assumptions:
+    - Users are assumed to have basic technical literacy to navigate the application interface.
+    - The application's effectiveness relies on student engagement and voluntarily.
+    - The manager takes all responsibility for security and permission of the used images.
 
-Dependencies:
-- The application relies on a user management system to differentiate between manager, teacher, and student roles.
-- The application requires a secure data storage solution to maintain user information, student progress, and flashcard data.
-- The application depends on digital devices (tablets/computers) with internet access (if web-based) for students and teachers.
+- Dependencies:
+    - The application relies on a user management system to differentiate between manager, teacher, and student roles.
+    - The application requires a secure data storage solution to maintain user information, student progress, and flashcard data.
+    - The application depends on digital devices (tablets/computers) with internet access (if web-based) for students and teachers.
 ## 3. System Features
 
 *This template illustrates organizing the functional requirements for the product by system features, the major services provided by the product. You may prefer to organize this section by use case, mode of operation, user class, object class, functional hierarchy, or combinations of these, whatever makes the most logical sense for your product.*
