@@ -140,10 +140,11 @@ date created
     - **Login Page:** Provides required fields to log in.
     - **Homepage:** Allows students to select game modes for flashcard practice.
     - **Gameplay:** Testing students with gamified experiences. The algorithm will show difficult card more often.
+    - **Settings:** Allows to modify settings.
 - **For teachers:**
     - **Login Page:** Provides required fields to log in.
-    - **Home Page:** Displays options for accessing flashcard sets and student profiles.
-    - **Flashcard Sets:** Shows multiple flashcard sets. Allow to create, edit, delete.
+    - **Home Page:** Displays options for accessing flashcard lists and student profiles.
+    - **Flashcard Lists:**
     - **Student Profiles:** Shows multiple student profiles. Allow to view results, add and remove students.
 
 
