@@ -79,12 +79,12 @@ date created
 
 *Describe the context and origin of the product being specified in this SRS. For example, state whether this product is a follow-on member of a product family, a replacement for certain existing systems, or a new, self-contained product. If the SRS defines a component of a larger system, relate the requirements of the larger system to the functionality of this software and identify interfaces between the two. A simple diagram that shows the major components of the overall system, subsystem interconnections, and external interfaces can be helpful.*
 
-This self-contained product is a ?Window application operating on an education system server.
+This self-contained product is a web application operating on an education system server.
 ### 2.2. Product Features
 
 *Summarize the major features the product contains or the significant functions that it performs or lets the user perform. Details will be provided in Section 3, so only a high level summary  is needed here. Organize the functions to make them understandable to any reader of the SRS. A picture of the major groups of related requirements and how they relate, such as a top level data flow diagram or a class diagram, is often effective.*
 
-The application allows the manager to create flashcards using words and images. The students can then study this falshcards on the appliation. The result will be stored and made visible to the teacher. In addition, the application analize the results and repeat 
+The application allows the manager to create flashcards using words and images. The students can then study this flashcards on the application. The results will be stored and made visible to the teacher. In addition, the application analyze the results and repeat 
 the words that the kids could not remember.  
 ### 2.3. User Classes and Characteristics
 
