@@ -142,15 +142,15 @@ System Response: The system validates the entered credentials.
 
 If the credentials are incorrect, the system shows an error message. If the credentials are correct, the system authenticates the user and initiates a session.
 
-### 3.2. Manage flashcards
+### 3.2. Manage flashcards system
 
-#### 3.1.1. Description and Priority
+#### 3.2.1. Description and Priority
 
 Description: Manage flashcards is a feature that allows managers to create and add new flashcards or edit/remove existing flashcards to the study set. 
 
 Priority level: High.
 
-#### 3.1.2. Stimulus/Response Sequences
+#### 3.2.2. Stimulus/Response Sequences
 
 User Action: User navigates to the “Manage Flashcards” section.
 
@@ -158,16 +158,56 @@ System Response: Displays the existing flashcards in the collection.
 
 User Action: User selects the "Add New Flashcard" or "Edit Flashcards" or "Delete Flashcards" option.
 
-System Response: Presents a form for the user to input the picture and its corresponding meaning for the new flashcard or the existing flashcard, or remove the flashcard temporarily.
+System Response: Presents a form for the user to input the picture/image and its corresponding meaning for the new flashcard or the existing flashcard, or remove the flashcard temporarily.
 
 User Action: User makes changes and confirms.
 
 System Response: Validates the input and adds/updates/removes the flashcard to/from the collection.
 
-#### 3.1.3. Functional Requirements
+#### 3.2.3. Functional Requirements
 
 - *REQ-1:* Database Systems: These are used to store and manage data.
 - *REQ-2:* Front-End Frameworks/Libraries: To help build the user interface of the system.
+
+### 3.3. Learning and Assessment system
+
+#### 3.3.1. Description and Priority
+
+Description: This is a feature that allows users to create structured lessons by grouping related flashcards and generating tests based on these lessons for self-assessment.
+
+Priority level: High.
+
+#### 3.3.2. Stimulus/Response Sequences
+
+User Action: User navigates to the “Create Lesson” section.
+
+System Response: Displays an interface for the user to create a new lesson or reuse an existing one.
+
+User Action: User selects the “Add Flashcards to Lesson” option.
+
+System Response: Presents a list of the user’s flashcards for selection.
+
+User Action: User selects the desired flashcards and submits.
+
+System Response: Adds the selected flashcards to the new lesson and creates the new lesson.
+
+User Action: User selects the “Reuse Lesson” option.
+
+System Response: Presents a list of the user’s existing lessons for selection.
+
+User Action: User selects an existing lesson to reuse.
+
+System Response: Loads the selected lesson with its associated flashcards.
+
+User Action: User navigates to the “Take Test” section of the lesson.
+
+System Response: Generates a test based on the flashcards in the lesson.
+
+#### 3.3.3. Functional Requirements
+
+- *REQ-1:* Database Systems: These are used to store and manage data.
+- *REQ-2:* Front-End Frameworks/Libraries: To help build the user interface of the system.
+- *REQ-3:* Cookie Management: To handle and save user preferences.
 
 ## 4. External Interface Requirements
 
