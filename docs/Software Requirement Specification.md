@@ -63,6 +63,8 @@ The purpose of this document is to build a digital flashcard system to improve t
 
 *Describe any standards or typographical conventions that were followed when writing this SRS, such as fonts or highlighting that have special significance. For example, state whether priorities  for higher-level requirements are assumed to be inherited by detailed requirements, or whether every requirement statement is to have its own priority.*
 
+Priorities for higher-level requirements are assumed to be inherited by detailed requirements.
+
 ### 1.3. Intended Audience and Reading Suggestions
 
 *Describe the different types of reader that the document is intended for, such as developers, project managers, marketing staff, users, testers, and documentation writers. Describe what the rest of this SRS contains and how it is organized. Suggest a sequence for reading the document, beginning with the overview sections and proceeding through the sections that are most pertinent to each reader type.*
@@ -73,7 +75,7 @@ This document is intended for developers, project manager as well as the client'
 
 *Provide a short description of the software being specified and its purpose, including relevant benefits, objectives, and goals. Relate the software to corporate goals or business strategies. If a separate vision and scope document is available, refer to it rather than duplicating its contents here. An SRS that specifies the next release of an evolving product should contain its own scope statement as a subset of the long-term strategic product vision.*
 
-The purpose of the flashcard system is to ease the management of flashcards, allow adding and removing new cards quickly and simultaneously, provide an easy-to-use application for students and teachers, improve the process of learning and teaching new words by pointing out the difficult words automatically. This is achieved by having a central database for the flashcards and analyzing the study process.
+The purpose of the flashcard system is to ease the management of flashcards, allow adding and removing new cards quickly and simultaneously, provide an easy-to-use application for students and teachers, improve the process of learning and teaching new words by showing difficult words more frequently. This is achieved by having a central database for the flashcards and analyzing the study process.
 
 ### 1.5. References
 
