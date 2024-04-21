@@ -225,19 +225,3 @@ Access to the database shall be granted to students, teachers and managers only.
 - **Portability**: The system should be easily transfered to other servers.
 
 - **Usability**: The system should have a uniform look and feel across different browsers.
-
-## 6. Other Requirements
-
-*Define any other requirements not covered elsewhere in the SRS. This might include database requirements, internationalization requirements, legal requirements, reuse objectives for the project, and so on. Add any new sections that are pertinent to the project.*
-
-### Appendix A: Glossary
-
-*Define all the terms necessary to properly interpret the SRS, including acronyms and abbreviations. You may wish to build a separate glossary that spans multiple projects or the entire organization, and just include terms specific to a single project in each SRS.*
-
-### Appendix B: Analysis Models
-
-*Optionally, include any pertinent analysis models, such as data flow diagrams, class diagrams, state-transition diagrams, or entity-relationship diagrams.*
-
-### Appendix C: Issues List
-
-*This is a dynamic list of the open requirements issues that remain to be resolved, including TBDs, pending decisions, information that is needed, conflicts awaiting resolution, and the like.*
