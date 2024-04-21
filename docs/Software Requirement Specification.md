@@ -77,10 +77,6 @@ This document is intended for developers, project manager as well as the client'
 
 The purpose of the flashcard system is to ease the management of flashcards, allow adding and removing new cards quickly and simultaneously, provide an easy-to-use application for students and teachers, improve the process of learning and teaching new words by showing difficult words more frequently. This is achieved by having a central database for the flashcards and analyzing the study process.
 
-### 1.5. References
-
-*List any other documents or Web addresses to which this SRS refers. These may include user interface style guides, contracts, standards, system requirements specifications, use case documents, or a vision and scope document. Provide enough information so that the reader could access a copy of each reference, including title, author, version number, date, and source or location.*
-
 ## 2. Overall Description
 
 ### 2.1. Product Perspective
@@ -180,11 +176,11 @@ Access to the database shall be granted to students, teachers and managers only.
 
 *Specify any additional quality characteristics for the product that will be important to either the customers or the developers. Some to consider are: adaptability, availability, correctness, flexibility, interoperability, maintainability, portability, reliability, reusability, robustness, testability, and usability. Write these to be specific, quantitative, and verifiable when possible. At the least, clarify the relative preferences for various attributes, such as ease of use over ease of learning.*
 
-- Correctness: The system should correctly link two sides of a flashcard.
+- **Correctness**: The system should correctly link two sides of a flashcard.
 
-- Portability: The system should be easily transfered to other servers.
+- **Portability**: The system should be easily transfered to other servers.
 
-- Usability: The system should have a uniform look and feel across different browsers.
+- **Usability**: The system should have a uniform look and feel across different browsers.
 
 ## 6. Other Requirements
 
