@@ -17,7 +17,6 @@ date created
     - [1.2. Document Conventions](#12-document-conventions)
     - [1.3. Intended Audience and Reading Suggestions](#13-intended-audience-and-reading-suggestions)
     - [1.4. Project Scope](#14-project-scope)
-    - [1.5. References](#15-references)
 - [2. Overall Description](#2-overall-description)
     - [2.1. Product Perspective](#21-product-perspective)
     - [2.2. Product Features](#22-product-features)
@@ -39,10 +38,6 @@ date created
     - [5.2. Safety Requirements](#52-safety-requirements)
     - [5.3. Security Requirements](#53-security-requirements)
     - [5.4. Software Quality Attributes](#54-software-quality-attributes)
-- [6. Other Requirements](#6-other-requirements)
-    - [Appendix A: Glossary](#appendix-a-glossary)
-    - [Appendix B: Analysis Models](#appendix-b-analysis-models)
-    - [Appendix C: Issues List](#appendix-c-issues-list)
 
 ## Revision History
 
@@ -95,9 +90,9 @@ the words that the kids could not remember.
 *Identify the various user classes that you anticipate will use this product. User classes may be differentiated based on frequency of use, subset of product functions used, technical expertise, security or privilege levels, educational level, or experience. Describe the pertinent characteristics of each user class. Certain requirements may pertain only to certain user classes. Distinguish the favored user classes from those who are less important to satisfy.*
 
 Three main user classes are: "Manager", "Teacher" and "Student". 
-- "Manager": manages the overall application, creating new flashcards and managing user accounts.
-- "Teacher": Views student result and identifies words that students find difficult as well as words that are easy to memorize.
-- "Student" (End User): Uses the application to learn new words through flashcards.
+- **Manager:** manages the overall application, creating new flashcards and managing user accounts.
+- **Teacher:** Views student result and identifies words that students find difficult as well as words that are easy to memorize.
+- **Student (End User):** Uses the application to learn new words through flashcards.
 ### 2.4. Operating Environment
 
 *Describe the environment in which the software will operate, including the hardware platform, operating system and versions, and any other software components or applications with which it must peacefully coexist.*
@@ -122,12 +117,12 @@ of the application.
 
 *List any assumed factors (as opposed to known facts) that could affect the requirements stated in the SRS. These could include third-party or commercial components that you plan to use, issues around the development or operating environment, or constraints. The project could be affected if these assumptions are incorrect, are not shared, or change. Also identify any dependencies the project has on external factors, such as software components that you intend to reuse from another project, unless they are already documented elsewhere (for example, in the vision and scope document or the project plan).*
 
-- Assumptions:
+- **Assumptions:**
     - Users are assumed to have basic technical literacy to navigate the application interface.
     - The application's effectiveness relies on student engagement and voluntarily.
     - The manager takes all responsibility for security and permission of the used images.
 
-- Dependencies:
+- **Dependencies:**
     - The application relies on a user management system to differentiate between manager, teacher, and student roles.
     - The application requires a secure data storage solution to maintain user information, student progress, and flashcard data.
     - The application depends on digital devices (tablets/computers) with internet access (if web-based) for students and teachers.
@@ -171,9 +166,14 @@ of the application.
     - **Settings:** Allows to modify settings.
 - **For teachers:**
     - **Login Page:** Provides required fields to log in.
-    - **Home Page:** Displays options for accessing flashcard lists and student profiles.
-    - **Flashcard Lists:**
+    - **Search Bar:** Allows to search flashcards, students, decks.
+    - **Today Page:** List of flashcards assigned to students, reset everyday.
+    - **Plan Page:** Assignments history.
     - **Student Profiles:** Shows multiple student profiles. Allow to view results, add and remove students.
+    - **Decks List:** A list of flashcard decks created.
+- **For managers:**
+    - **Manage accounts:** Allows to create, delete accounts.
+    - **Manage flashcards:** Allows to create, modify, delete flashcards.
 
 
 ### 4.2. Hardware Interfaces
@@ -187,7 +187,7 @@ The application is designed to run on any device with a web browser, including d
 *Describe the connections between this product and other specific software components (name and version), including databases, operating systems, tools, libraries, and integrated commercial components. Identify the data items or messages coming into the system and going out and describe the purpose of each. Describe the services needed and the nature of communications. Refer to documents that describe detailed application programming interface protocols. Identify data that will be shared across software components. If the data sharing mechanism must be implemented in a specific way (for example, use of a global data area in a multitasking operating system), specify this as an implementation constraint.*
 
 - **Web Browser Compatibility:** The application is compatible with major web browsers such as Google Chrome, Mozilla Firefox, Safari, Microsoft Edges.
-- **Database Integration:** The application interfaces with a database system to store user account information, flashcard sets, user progress and other relevant data.
+- **Database Integration:** The application interfaces with a database system to store user account information, flashcard decks, user progress and other relevant data.
 
 ### 4.4. Communication Interfaces
 
