@@ -135,15 +135,27 @@ of the application.
 
 *This template illustrates organizing the functional requirements for the product by system features, the major services provided by the product. You may prefer to organize this section by use case, mode of operation, user class, object class, functional hierarchy, or combinations of these, whatever makes the most logical sense for your product.*
 
-### 3.1. System Feature 1
+### 3.1. Login system
 
 #### 3.1.1. Description and Priority
 
 *Provide a short description of the feature and indicate whether it is of High, Medium, or Low priority. You could also include specific priority component ratings, such as benefit, penalty, cost, and risk (each rated on a relative scale from a low of 1 to a high of 9).*
 
+Description: A security measure that requires users to provide their credentials to authenticate and authorize individuals, ensuring only authorized users can access the system.
+
+Priority level: High
+
 #### 3.1.2. Stimulus/Response Sequences
 
 *List the sequences of user actions and system responses that stimulate the behavior defined for this feature. These will correspond to the dialog elements associated with use cases.*
+
+User Action: The user navigates to the login page.
+
+System Response: The system presents the login form asking for username and password.
+
+User Action: The user enters their username and password and submits the form.
+
+System Response: The system validates the entered credentials.
 
 #### 3.1.3. Functional Requirements
 
@@ -151,12 +163,132 @@ of the application.
 
 *Each requirement should be uniquely identified with a sequence number or a meaningful tag of some kind.*
 
-- *REQ-1:*
-- *REQ-2:*
+- *REQ-1:* Database Systems: These are used to store and manage data.
+- *REQ-2:* Password Encryption Methods: Should be hashed using strong algorithms to resist attacks.
+- *REQ-3:* Front-End Frameworks/Libraries: To help build the user interface of the system.
+- *REQ-4:* Authentication: Tools for managing user authentication
 
-### 3.2. System Feature 2
+If the credentials are incorrect, the system shows an error message. If the credentials are correct, the system authenticates the user and initiates a session.
 
-*And so on*
+### 3.2. Manage flashcards system
+
+#### 3.2.1. Description and Priority
+
+Description: Manage flashcards is a feature that allows managers to create and add new flashcards or edit/remove existing flashcards to the study set. 
+
+Priority level: High.
+
+#### 3.2.2. Stimulus/Response Sequences
+
+User Action: User navigates to the “Manage Flashcards” section.
+
+System Response: Displays the existing flashcards in the collection.
+
+User Action: User selects the "Add New Flashcard" or "Edit Flashcards" or "Delete Flashcards" option.
+
+System Response: Presents a form for the user to input the picture/image and its corresponding meaning for the new flashcard or the existing flashcard, or remove the flashcard temporarily.
+
+User Action: User makes changes and confirms.
+
+System Response: Validates the input and adds/updates/removes the flashcard to/from the collection.
+
+#### 3.2.3. Functional Requirements
+
+- *REQ-1:* Database Systems: These are used to store and manage data.
+- *REQ-2:* Front-End Frameworks/Libraries: To help build the user interface of the system.
+
+### 3.3. Flashcard decks and lessons / tests management system
+
+#### 3.3.1. Description and Priority
+
+Description: This is a feature that allows teachers to create or edit structured flashcard decks by search, grouping related flashcards to a deck and create lessons or tests from the existing decks.
+
+Priority level: High.
+
+#### 3.3.2. Stimulus/Response Sequences
+
+User Action: Teacher navigates to the “Decks” section.
+
+System Response: Displays an interface for the user to create a new deck or edit an existing one.
+
+User Action: Teacher create a new deck / selects a existing deck.
+
+System Response: Presents a list of the deck’s flashcards for selection.
+
+User Action: Teacher adds or removes a selected flashcards from the deck.
+
+System Response: Adds or removes the selected flashcards from the deck.
+
+User Action: Teacher selects the “Save” option.
+
+System Response: Save the configured deck.
+
+User Action: Teacher selects an existing deck as lesson / test.
+
+System Response: Loads the selected deck to a lesson / test with its associated flashcards.
+
+User Action: Student navigates to the “Start lesson”/“Take Test” section.
+
+System Response: Generates a lesson/test based on the flashcards in the deck.
+
+#### 3.3.3. Functional Requirements
+
+- *REQ-1:* Database Systems: These are used to store and manage data.
+- *REQ-2:* Front-End Frameworks/Libraries: To help build the user interface of the system.
+- *REQ-3:* Cookie Management: To handle and save user preferences.
+
+### 3.4. Result analysis system
+
+#### 3.4.1. Description and Priority
+
+Description: This is a feature that allows teachers to view students result, words that are hard to remember as well as words that 
+students can remember quickly.
+
+Priority level: High.
+
+#### 3.4.2. Stimulus/Response Sequences
+
+User Action: Teacher navigates to the "Result" section.
+
+System Response: Displays the words students have learned, group by difficulty.
+
+User Action: Teacher select a particular student on the student list.
+
+System Response: Loads and displays the progress and result of that student.
+
+#### 3.4.3. Functional Requirements
+
+- *REQ-1:* Database Systems: These are used to store and manage data.
+- *REQ-2:* Front-End Frameworks/Libraries: To help build the user interface of the system.
+
+### 3.5. Account management system.
+
+#### 3.5.1. Description and Priority
+
+Description: This is a feature that allows managers to create or remove student/teacher accounts.
+
+Priority level: High.
+
+#### 3.5.2. Stimulus/Response Sequences
+
+User Action: Manager navigates to the "Account Management" section.
+
+System Response: Loads and displays existing teacher/student accounts.
+
+User Action: Manager selects the "Edit" option.
+
+System Response: Displays the account remove button and new account input box.
+
+User Action: Manager remove an account by select the "Remove" option or input new account information to the new 
+account input box.
+
+System Response: Update the database with the new account information or remove a account from the database.
+
+#### 3.5.3. Functional Requirements
+
+- *REQ-1:* Database Systems: These are used to store and manage data.
+- *REQ-2:* Front-End Frameworks/Libraries: To help build the user interface of the system.
+- *REQ-3:* Password Encryption Methods: Should be hashed using strong algorithms to resist attacks.
 
 ## 4. External Interface Requirements
 
