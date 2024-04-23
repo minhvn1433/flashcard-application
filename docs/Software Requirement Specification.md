@@ -217,7 +217,7 @@ If a teacher tries to view the results of a student who does not exist or has no
 
 #### 3.5.1. Description and Priority
 
-- **Description:** This is a feature that allows managers to create or remove student/teacher accounts.
+- **Description:** This is a feature that allows managers to create or remove teacher accounts. Also allows teachers to create or remove student accounts.
 - **Priority level:** High.
 
 #### 3.5.2. Stimulus/Response Sequences
