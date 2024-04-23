@@ -158,6 +158,8 @@ If the credentials are incorrect, the system shows an error message. If the cred
 - **Database Systems:** These are used to store and manage data.
 - **Front-End Frameworks/Libraries:** To help build the user interface of the system.
 
+If a manager tries to create a flashcard with invalid data (e.g., missing picture/image or meaning), add a flashcard that already exists in the study set, edit or remove a flashcard that does not exist in the study set, input more text than the system can handle, the system should display a corresponding error message.
+
 ### 3.3. Flashcard Decks and Lessons/Tests Management System
 
 #### 3.3.1. Description and Priority
@@ -186,6 +188,9 @@ If the credentials are incorrect, the system shows an error message. If the cred
 - **Front-End Frameworks/Libraries:** To help build the user interface of the system.
 - **Cookie Management:** To handle and save user preferences.
 
+If a user tries to create a lesson that already exists, the system should notify the user about the duplication and prevent the creation of the duplicate lesson.
+If a user tries to generate a test from a lesson with insufficient flashcards (e.g., less than the minimum required for a test), the system should display an error message indicating the issue.
+
 ### 3.4. Result Analysis System
 
 #### 3.4.1. Description and Priority
@@ -206,11 +211,13 @@ students can remember quickly.
 - **Database Systems:** These are used to store and manage data.
 - **Front-End Frameworks/Libraries:** To help build the user interface of the system.
 
+If a teacher tries to view the results of a student who does not exist or has not taken any tests, the system should display nothing.
+
 ### 3.5. Account Management System
 
 #### 3.5.1. Description and Priority
 
-- **Description:** This is a feature that allows managers to create or remove student/teacher accounts.
+- **Description:** This is a feature that allows managers to create or remove teacher accounts. Also allows teachers to create or remove student accounts.
 - **Priority level:** High.
 
 #### 3.5.2. Stimulus/Response Sequences
@@ -227,7 +234,9 @@ account input box.
 
 - **Database Systems:** These are used to store and manage data.
 - **Front-End Frameworks/Libraries:** To help build the user interface of the system.
-- **Password Encryption Methods:** Should be hashed using strong algorithms to resist attacks.
+- **Verification Methods and Change History:** Deploy Two-Factor Authentication and Rollback Mechanism.
+
+The system should reset the changes if the user unsuccessfully completes the verification process.
 
 ## 4. External Interface Requirements
 
