@@ -1,0 +1,10 @@
+{% extends "teachers/layout.html" %}
+
+{% block title %}{{ flashcard }} | Flashcards{% endblock %}
+
+{% block main %}
+    <p>Front: {{ flashcard.front }} - Back: {{ flashcard.back }}</p>
+    {% if flashcard.image %}
+        <img src="{{ flashcard.image.url }}" alt="Flashcard image">
+    {% endif %}
+{% endblock %}

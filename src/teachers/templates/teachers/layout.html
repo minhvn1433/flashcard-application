@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{% static 'teachers/favicon.ico' %}" rel="icon">
+        <link href="{% static 'teachers/styles.css' %}" rel="stylesheet">
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+
+    <body>
+        <nav>
+            <a href="{% url 'teachers:assignment' %}">Assignment</a>
+            <br>
+            <a href="{% url 'teachers:search' %}">Search</a>
+            <br>
+            <a href="{% url 'teachers:students' %}">Students</a>
+            <ul id="decks_list">
+                {% for deck in user_decks %}
+                    <li><a href="{% url 'teachers:deck' deck.id %}">{{ deck }}</a></li>
+                {% endfor %}
+            </ul>
+            <form action="{% url 'teachers:new_deck' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">New Deck</button>
+            </form>
+            <a href="{% url 'users:logout' %}">Log Out</a>
+            <hr>
+        </nav>
+
+        <main>
+            {% block main %}{% endblock %}
+        </main>
+
+        <script>
+            let csrfToken = "{{ csrf_token }}";
+            let assignmentFlashcardsUrl = "{% url 'teachers:assignment_flashcards' %}";
+            let studentsStudentUrl = "{% url 'teachers:students_student' %}";
+            let searchFlashcardsUrl = "{% url 'teachers:search_flashcards' %}";
+            let searchStudentsUrl = "{% url 'teachers:search_students' %}";
+            let searchDecksUrl = "{% url 'teachers:search_decks' %}";
+        </script>
+        <script src="{% static 'teachers/script.js' %}"></script>
+    </body>
+
+</html>

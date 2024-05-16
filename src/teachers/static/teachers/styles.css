@@ -1,0 +1,7 @@
+.search-item {
+    display: none;
+}
+
+.search-item.active {
+    display: block;
+}

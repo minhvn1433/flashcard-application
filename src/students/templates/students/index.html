@@ -1,0 +1,20 @@
+{% extends "students/layout.html" %}
+
+{% block title %}Flashcards{% endblock %}
+
+{% block body %}
+    <a href="{% url 'students:multiple_choice' %}">Multiple Choice</a>
+    <br>
+    <a href="{% url 'students:true_false' %}">True False</a>
+    <br>
+    <a href="{% url 'students:writing' %}">Writing</a>
+    <br>
+    <a href="{% url 'students:matching' %}">Matching</a>
+    <hr>
+    <a href="{% url 'users:logout' %}">Log Out</a>
+    <div>Studying Progress {{ score }}%</div>
+    <div>New Cards: {{ new_cards }}</div>
+    <div>Still Learning: {{ still_learning }}</div>
+    <div>Almost Done: {{ almost_done }}</div>
+    <div>Mastered: {{ mastered }}</div>
+{% endblock %}

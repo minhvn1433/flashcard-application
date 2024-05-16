@@ -1,0 +1,36 @@
+{% extends "teachers/layout.html" %}
+
+{% block title %}{{ deck }} - deck by {{ request.user.username }} | Flashcards{% endblock %}
+
+{% block main %}
+    <p>{{ deck }} - by {{ deck.teacher.user.username }}</p>
+    {% if request.user.username == deck.teacher.user.username %}
+        <form method="POST" action="{% url 'teachers:edit_deck' deck.id %}">
+            {% csrf_token %}
+            <input type="text" id="deck-name" name="deck-name" placeholder="Add a name" required>
+            <button type="submit">Save</button>
+        </form>
+        <form method="POST" action="{% url 'teachers:delete_deck' deck.id %}">
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+        </form>
+    {% endif %}
+    <ul id="deck-flashcards">
+        {% for flashcard in flashcards %}
+            <li>
+                <a href="{% url 'teachers:flashcard' flashcard.id %}">{{ flashcard }}</a>
+                <input type="checkbox" data-flashcard-id="{{ flashcard.id }}" class="flashcard-checkbox" {% if flashcard in teacher.flashcards.all %}checked{% endif %}>
+                {% if request.user.username == deck.teacher.user.username %}
+                    <button data-flashcard-id="{{ flashcard.id }}" class="remove-button">Remove</button>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    {% if request.user.username == deck.teacher.user.username %}
+        <input type="search" id="deck-search" name="query" placeholder="Search" value="{{ query }}" autofocus>
+        <ul id="search-results"></ul>
+    {% endif %}
+    <script>
+        let deckFlashcardsUrl = "{% url 'teachers:deck_flashcards' deck.id %}";
+    </script>
+{% endblock %}
