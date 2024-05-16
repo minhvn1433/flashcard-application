@@ -1,0 +1,26 @@
+{% extends "students/layout.html" %}
+
+{% load static %}
+
+{% block title %}Flashcards - Multiple Choice{% endblock %}
+
+{% block body %}
+    <main>
+        <progress id="progressBar" value="0" max="7"></progress>
+        <br>
+        <img alt="Flashcard image"></img>
+        <p id="question"></p>
+        <button id="answer1" class="answer"></button>
+        <button id="answer2" class="answer"></button>
+        <button id="answer3" class="answer"></button>
+        <button id="answer4" class="answer"></button>
+    </main>
+
+    <script>
+        let csrfToken = "{{ csrf_token }}";
+        let getFlashcardsUrl = "{% url 'students:get_flashcards' %}";
+        let updateResultsUrl = "{% url 'students:update_results' %}";
+        let indexUrl = "{% url 'students:index' %}";
+    </script>
+    <script src="{% static 'students/multiple_choice.js' %}"></script>
+{% endblock %}

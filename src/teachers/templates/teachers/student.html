@@ -1,0 +1,12 @@
+{% extends "teachers/layout.html" %}
+
+{% block title %}{{ student.user.username }} | Flashcards{% endblock %}
+
+{% block main %}
+    <p>{{ student.user.username }}</p>
+    <ul>
+        {% for result in results %}
+            <li><a href="{% url 'teachers:flashcard' result.flashcard.id %}">{{ result.flashcard }} - {{ result.state }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

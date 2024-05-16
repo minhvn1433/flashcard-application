@@ -1,0 +1,17 @@
+{% extends "teachers/layout.html" %}
+
+{% block title %}Flashcards - Assignment{% endblock %}
+
+{% block main %}
+    <p>Assignment</p>
+    <ul id="assignment-flashcards">
+        {% for flashcard in flashcards %}
+            <li>
+                <a href="{% url 'teachers:flashcard' flashcard.id %}">{{ flashcard }}</a>
+                <input type="checkbox" data-flashcard-id="{{ flashcard.id }}" class="flashcard-checkbox" checked>
+            </li>
+        {% endfor %}
+    </ul>
+    <input type="search" id="assignment-search" name="query" placeholder="Search" value="{{ query }}" autofocus>
+    <ul id="search-results"></ul>
+{% endblock %}
