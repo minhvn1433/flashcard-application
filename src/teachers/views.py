@@ -1,3 +1,4 @@
+from django.core.files.storage import default_storage
 from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
@@ -49,9 +50,12 @@ def assignment_flashcards(request):
             teacher.remove_flashcard(flashcard)
 
     flashcards = teacher.flashcards.all()
-    flashcards_list = list(flashcards.values("id", "front", "back"))
+    flashcards_list = list(flashcards.values("id", "front", "back", "image"))
     for flashcard in flashcards_list:
-        flashcard["url"] = reverse("teachers:flashcard", args=[flashcard["id"]])
+        if flashcard["image"]:
+            flashcard["image_url"] = default_storage.url(str(flashcard["image"]))
+        else:
+            flashcard["image_url"] = None
 
     return JsonResponse({"flashcards": flashcards_list})
 
@@ -65,11 +69,17 @@ def search(request):
 def search_flashcards(request):
     query = request.GET.get("query", "")
     flashcards_list = []
+
     if query:
-        flashcards = Flashcard.objects.filter(Q(front__icontains=query) | Q(back__icontains=query))[:50]
-        flashcards_list = list(flashcards.values("id", "front", "back"))
+        flashcards = Flashcard.objects.filter(
+            Q(front__icontains=query) | Q(back__icontains=query)
+        )[:50]
+        flashcards_list = list(flashcards.values("id", "front", "back", "image"))
         for flashcard in flashcards_list:
-            flashcard["url"] = reverse("teachers:flashcard", args=[flashcard["id"]])
+            if flashcard["image"]:
+                flashcard["image_url"] = default_storage.url(str(flashcard["image"]))
+            else:
+                flashcard["image_url"] = None
 
     return JsonResponse({"flashcards": flashcards_list})
 
@@ -80,9 +90,29 @@ def search_students(request):
     students_list = []
     if query:
         students = Student.objects.filter(user__username__icontains=query)[:50]
-        students_list = list(students.values("user__id", "user__username"))
-        for student in students_list:
-            student["url"] = reverse("teachers:student", args=[student["user__id"]])
+        for student in students:
+            results = Result.objects.filter(student=student)
+
+            new_cards = results.filter(state=Result.NEW_CARDS).count()
+            still_learning = results.filter(state=Result.STILL_LEARNING).count()
+            almost_done = results.filter(state=Result.ALMOST_DONE).count()
+            mastered = results.filter(state=Result.MASTERED).count()
+
+            all_flashcards = new_cards + still_learning + almost_done + mastered
+            score = 0
+            if all_flashcards > 0:
+                score = int(
+                    (still_learning / all_flashcards) * 25
+                    + (almost_done / all_flashcards) * 75
+                    + (mastered / all_flashcards) * 100
+                )
+
+            students_list.append({
+                "user__id": student.user.id,
+                "user__username": student.user.username,
+                "score": score,
+                "url": reverse("teachers:student", args=[student.user.id]),
+            })
 
     return JsonResponse({"students": students_list})
 
@@ -93,7 +123,7 @@ def search_decks(request):
     decks_list = []
     if query:
         decks = Deck.objects.filter(name__icontains=query)[:50]
-        decks_list = list(decks.values("id", "name"))
+        decks_list = list(decks.values("id", "name", "teacher__user__username"))
         for deck in decks_list:
             deck["url"] = reverse("teachers:deck", args=[deck["id"]])
 
@@ -101,20 +131,55 @@ def search_decks(request):
 
 
 @login_required
-def flashcard(request, id):
-    flashcard = Flashcard.objects.get(id=id)
-
-    return render(request, "teachers/flashcard.html", {"flashcard": flashcard})
-
-
-@login_required
 def student(request, id):
     student = Student.objects.get(user__id=id)
     results = Result.objects.filter(student=student)
 
+    new_cards = results.filter(state=Result.NEW_CARDS).count()
+    still_learning = results.filter(state=Result.STILL_LEARNING).count()
+    almost_done = results.filter(state=Result.ALMOST_DONE).count()
+    mastered = results.filter(state=Result.MASTERED).count()
+
+    all_flashcards = new_cards + still_learning + almost_done + mastered
+    score = 0
+    if all_flashcards > 0:
+        score = int(
+            (still_learning / all_flashcards) * 25
+            + (almost_done / all_flashcards) * 75
+            + (mastered / all_flashcards) * 100
+        )
+
     return render(
-        request, "teachers/student.html", {"student": student, "results": results}
+        request,
+        "teachers/student.html",
+        {
+            "student": student,
+            "results": results,
+            "new_cards": new_cards,
+            "still_learning": still_learning,
+            "almost_done": almost_done,
+            "mastered": mastered,
+            "score": score,
+        },
     )
+
+
+@login_required
+def student_data(request, id):
+    student = Student.objects.get(user__id=id)
+    results = Result.objects.filter(student=student)
+
+    new_cards = results.filter(state=Result.NEW_CARDS).count()
+    still_learning = results.filter(state=Result.STILL_LEARNING).count()
+    almost_done = results.filter(state=Result.ALMOST_DONE).count()
+    mastered = results.filter(state=Result.MASTERED).count()
+
+    return JsonResponse({
+        "new_cards": new_cards,
+        "still_learning": still_learning,
+        "almost_done": almost_done,
+        "mastered": mastered,
+    })
 
 
 @login_required
@@ -122,15 +187,42 @@ def deck(request, id):
     deck = Deck.objects.get(id=id)
     flashcards = deck.flashcards.all()
 
-    return render(request, "teachers/deck.html", {"deck": deck, "flashcards": flashcards})
+    return render(
+        request, "teachers/deck.html", {"deck": deck, "flashcards": flashcards}
+    )
 
 
 @login_required
 def students(request):
     teacher = Teacher.objects.get(user=request.user)
     students = teacher.students.all()
+    students_list = []
 
-    return render(request, "teachers/students.html", {"students": students})
+    for student in students:
+        results = Result.objects.filter(student=student)
+
+        new_cards = results.filter(state=Result.NEW_CARDS).count()
+        still_learning = results.filter(state=Result.STILL_LEARNING).count()
+        almost_done = results.filter(state=Result.ALMOST_DONE).count()
+        mastered = results.filter(state=Result.MASTERED).count()
+
+        all_flashcards = new_cards + still_learning + almost_done + mastered
+        score = 0
+        if all_flashcards > 0:
+            score = int(
+                (still_learning / all_flashcards) * 25
+                + (almost_done / all_flashcards) * 75
+                + (mastered / all_flashcards) * 100
+            )
+
+        student_dict = {
+            "user__id": student.user.id,
+            "user__username": student.user.username,
+            "score": score
+        }
+        students_list.append(student_dict)
+
+    return render(request, "teachers/students.html", {"students": students_list})
 
 
 @login_required
@@ -148,9 +240,32 @@ def students_student(request):
             teacher.remove_student(student)
 
     students = teacher.students.all()
-    students_list = list(students.values("user__id", "user__username"))
-    for student in students_list:
-        student["url"] = reverse("teachers:student", args=[student["user__id"]])
+    students_list = []
+
+    for student in students:
+        results = Result.objects.filter(student=student)
+
+        new_cards = results.filter(state=Result.NEW_CARDS).count()
+        still_learning = results.filter(state=Result.STILL_LEARNING).count()
+        almost_done = results.filter(state=Result.ALMOST_DONE).count()
+        mastered = results.filter(state=Result.MASTERED).count()
+
+        all_flashcards = new_cards + still_learning + almost_done + mastered
+        score = 0
+        if all_flashcards > 0:
+            score = int(
+                (still_learning / all_flashcards) * 25
+                + (almost_done / all_flashcards) * 75
+                + (mastered / all_flashcards) * 100
+            )
+
+        student_dict = {
+            "user__id": student.user.id,
+            "user__username": student.user.username,
+            "score": score
+        }
+        student_dict["url"] = reverse("teachers:student", args=[student_dict["user__id"]])
+        students_list.append(student_dict)
 
     return JsonResponse({"students": students_list})
 
@@ -164,11 +279,12 @@ def new_deck(request):
         deck.save()
 
         return redirect("teachers:deck", id=deck.id)
-    
+
+
 @login_required
 def deck_flashcards(request, id):
     deck = Deck.objects.get(id=id)
-    
+
     if request.method == "POST":
         flashcard_id = request.POST.get("flashcard_id")
         flashcard = Flashcard.objects.get(id=flashcard_id)
@@ -178,13 +294,17 @@ def deck_flashcards(request, id):
             deck.add_flashcard(flashcard)
         elif action == "remove":
             deck.remove_flashcard(flashcard)
-        
+
     flashcards = deck.flashcards.all()
-    flashcards_list = list(flashcards.values("id", "front", "back"))
+    flashcards_list = list(flashcards.values("id", "front", "back", "image"))
     for flashcard in flashcards_list:
-        flashcard["url"] = reverse("teachers:flashcard", args=[flashcard["id"]])
+        if flashcard["image"]:
+            flashcard["image_url"] = default_storage.url(str(flashcard["image"]))
+        else:
+            flashcard["image_url"] = None
 
     return JsonResponse({"flashcards": flashcards_list})
+
 
 @login_required
 def edit_deck(request, id):
@@ -193,8 +313,9 @@ def edit_deck(request, id):
     if request.method == "POST":
         deck.name = request.POST.get("deck-name")
         deck.save()
-    
+
         return redirect("teachers:deck", id=deck.id)
+
 
 @login_required
 def delete_deck(request, id):

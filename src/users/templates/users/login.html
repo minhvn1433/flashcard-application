@@ -16,15 +16,25 @@
 
     <body>
         {% if message %}
-            <div>{{ message }}</div>
+            <header>
+                <div class="alert alert-danger text-center" role="alert">
+                    {{ message }}
+                </div>
+            </header>
         {% endif %}
 
-        <form action="{% url 'users:login' %}" method="post">
-            {% csrf_token %}
-            <input type="text" name="username" placeholder="Username" autofocus>
-            <input type="password" name="password" placeholder="Password">
-            <button type="submit">Log In</button>
-        </form>
+        <main class="container py-5 text-center">
+            <form action="{% url 'users:login' %}" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <input type="text" class="form-control mx-auto w-auto" name="username" placeholder="Username" autofocus>
+                </div>
+                <div class="mb-3">
+                    <input type="password" class ="form-control mx-auto w-auto" name="password" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Log In</button>
+            </form>
+        </main>
     </body>
 
 </html>

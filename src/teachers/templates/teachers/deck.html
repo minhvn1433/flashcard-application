@@ -1,9 +1,12 @@
 {% extends "teachers/layout.html" %}
 
+{% load static %}
+
 {% block title %}{{ deck }} - deck by {{ request.user.username }} | Flashcards{% endblock %}
 
 {% block main %}
-    <p>{{ deck }} - by {{ deck.teacher.user.username }}</p>
+    <h1>{{ deck }}</h1>
+    <h2>{{ deck.teacher.user.username }}</h2>
     {% if request.user.username == deck.teacher.user.username %}
         <form method="POST" action="{% url 'teachers:edit_deck' deck.id %}">
             {% csrf_token %}
@@ -15,22 +18,33 @@
             <button type="submit">Delete</button>
         </form>
     {% endif %}
-    <ul id="deck-flashcards">
-        {% for flashcard in flashcards %}
-            <li>
-                <a href="{% url 'teachers:flashcard' flashcard.id %}">{{ flashcard }}</a>
-                <input type="checkbox" data-flashcard-id="{{ flashcard.id }}" class="flashcard-checkbox" {% if flashcard in teacher.flashcards.all %}checked{% endif %}>
-                {% if request.user.username == deck.teacher.user.username %}
-                    <button data-flashcard-id="{{ flashcard.id }}" class="remove-button">Remove</button>
-                {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
+    <table id="deck-flashcards">
+        <tbody>
+            {% for flashcard in flashcards %}
+                <tr>
+                    <td class="image">
+                        {% if flashcard.image %}
+                            <img src="{{ flashcard.image.url }}" alt="Flashcard Image">
+                        {% endif %}
+                    </td>
+                    <td class="front">{{ flashcard.front }}</td>
+                    <td class="back">{{ flashcard.back }}</td>
+                    <td class="checkbox"><input type="checkbox" class="flashcard-checkbox" data-flashcard-id="{{ flashcard.id }}" {% if flashcard in teacher.flashcards.all %}checked{% endif %}></td>
+                    {% if request.user.username == deck.teacher.user.username %}
+                        <td class="button">
+                            <button class="remove-button" data-flashcard-id="{{ flashcard.id }}"><img src="{% static 'teachers/close-outline.svg' %}" alt="Close Outline"></button>
+                        </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     {% if request.user.username == deck.teacher.user.username %}
-        <input type="search" id="deck-search" name="query" placeholder="Search" value="{{ query }}" autofocus>
-        <ul id="search-results"></ul>
+        <input type="search" id="deck-search" class="search" name="query" placeholder="Search flashcards" value="{{ query }}">
+        <table id="search-results"></table>
     {% endif %}
     <script>
         let deckFlashcardsUrl = "{% url 'teachers:deck_flashcards' deck.id %}";
+        let closeOutlineSvg = "{% static 'teachers/close-outline.svg' %}";
     </script>
 {% endblock %}

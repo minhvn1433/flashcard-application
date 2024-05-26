@@ -5,6 +5,7 @@ import json
 
 from users.models import Flashcard, Student, Teacher, Deck, Result
 
+
 def login_required(view_func):
     def _wrapped_view(request, *args, **kwargs):
         if not request.user.is_authenticated:
@@ -15,6 +16,7 @@ def login_required(view_func):
             return view_func(request, *args, **kwargs)
         else:
             return redirect("users:index")
+
     return _wrapped_view
 
 
@@ -32,9 +34,23 @@ def index(request):
     all_flashcards = new_cards + still_learning + almost_done + mastered
     score = 0
     if all_flashcards > 0:
-        score = int((still_learning / all_flashcards) * 25 + (almost_done / all_flashcards) * 75 + (mastered / all_flashcards) * 100)
+        score = int(
+            (still_learning / all_flashcards) * 25
+            + (almost_done / all_flashcards) * 75
+            + (mastered / all_flashcards) * 100
+        )
 
-    return render(request, "students/index.html", {"new_cards": new_cards, "still_learning": still_learning, "almost_done": almost_done, "mastered": mastered, "score": score})
+    return render(
+        request,
+        "students/index.html",
+        {
+            "new_cards": new_cards,
+            "still_learning": still_learning,
+            "almost_done": almost_done,
+            "mastered": mastered,
+            "score": score,
+        },
+    )
 
 
 @login_required
@@ -65,13 +81,15 @@ def get_flashcards(request):
 
     for result in results:
         flashcard = result.flashcard
-        results_list.append({
-            "flashcard__id": flashcard.id,
-            "flashcard__front": flashcard.front,
-            "flashcard__back": flashcard.back,
-            "flashcard__image": default_storage.url(str(flashcard.image)),
-            "state": result.state,
-        })
+        results_list.append(
+            {
+                "flashcard__id": flashcard.id,
+                "flashcard__front": flashcard.front,
+                "flashcard__back": flashcard.back,
+                "flashcard__image": default_storage.url(str(flashcard.image)),
+                "state": result.state,
+            }
+        )
 
     return JsonResponse({"flashcards": results_list})
 
@@ -85,9 +103,9 @@ def update_results(request):
 
         for flashcard_data in flashcards:
             try:
-                flashcard = Flashcard.objects.get(id=flashcard_data['flashcard__id'])
+                flashcard = Flashcard.objects.get(id=flashcard_data["flashcard__id"])
                 result = Result.objects.get(student=student, flashcard=flashcard)
-                result.state = flashcard_data['state']
+                result.state = flashcard_data["state"]
                 result.save()
             except Result.DoesNotExist:
                 continue

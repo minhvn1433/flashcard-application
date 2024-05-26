@@ -164,14 +164,31 @@ function displaySuccess() {
     // Create a new main element for the success screen
     let successMain = document.createElement('main');
 
-    let congratsMessage = document.createElement('p');
+    let congratsMessage = document.createElement('div');
     congratsMessage.innerText = "Success! You've answered all questions.";
     successMain.appendChild(congratsMessage);
 
     let score = (stillLearning.length / allFlashcards.length) * 25 + (almostDone.length / allFlashcards.length) * 75 + (mastered.length / allFlashcards.length) * 100;
-    let progressResult = document.createElement('p');
-    progressResult.innerText = `Score: ${Math.floor(score)}%, New Cards: ${newCards.length}, Still Learning: ${stillLearning.length}, Almost Done: ${almostDone.length}, Mastered: ${mastered.length}`;
-    successMain.appendChild(progressResult);
+
+    let studyingProgressDiv = document.createElement('div');
+    studyingProgressDiv.innerText = `Studying Progress ${Math.floor(score)}%`;
+    successMain.appendChild(studyingProgressDiv);
+
+    let newCardsDiv = document.createElement('div');
+    newCardsDiv.innerText = `New Cards: ${newCards.length}`;
+    successMain.appendChild(newCardsDiv);
+
+    let stillLearningDiv = document.createElement('div');
+    stillLearningDiv.innerText = `Still Learning: ${stillLearning.length}`;
+    successMain.appendChild(stillLearningDiv);
+
+    let almostDoneDiv = document.createElement('div');
+    almostDoneDiv.innerText = `Almost Done: ${almostDone.length}`;
+    successMain.appendChild(almostDoneDiv);
+
+    let masteredDiv = document.createElement('div');
+    masteredDiv.innerText = `Mastered: ${mastered.length}`;
+    successMain.appendChild(masteredDiv);
 
     let homeButton = document.createElement('a');
     homeButton.href = indexUrl;
