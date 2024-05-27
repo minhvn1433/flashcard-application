@@ -3,15 +3,24 @@
 {% block title %}Flashcards - Assignment{% endblock %}
 
 {% block main %}
-    <p>Assignment</p>
-    <ul id="assignment-flashcards">
-        {% for flashcard in flashcards %}
-            <li>
-                <a href="{% url 'teachers:flashcard' flashcard.id %}">{{ flashcard }}</a>
-                <input type="checkbox" data-flashcard-id="{{ flashcard.id }}" class="flashcard-checkbox" checked>
-            </li>
-        {% endfor %}
-    </ul>
-    <input type="search" id="assignment-search" name="query" placeholder="Search" value="{{ query }}" autofocus>
-    <ul id="search-results"></ul>
+    <h1>Assignment</h1>
+    <h2>{{ request.user.username }}</h2>
+    <table id="assignment-flashcards">
+        <tbody>
+            {% for flashcard in flashcards %}
+                <tr>
+                    <td class="image">
+                        {% if flashcard.image %}
+                            <img src="{{ flashcard.image.url }}" alt="Flashcard Image">
+                        {% endif %}
+                    </td>
+                    <td class="front">{{ flashcard.front }}</td>
+                    <td class="back">{{ flashcard.back }}</td>
+                    <td class="checkbox"><input class="flashcard-checkbox" type="checkbox" data-flashcard-id="{{ flashcard.id }}" checked></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <input type="search" id="assignment-search" class="search" name="query" placeholder="Search flashcards" value="{{ query }}">
+    <table id="search-results"></table>
 {% endblock %}

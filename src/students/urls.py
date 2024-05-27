@@ -11,4 +11,5 @@ urlpatterns = [
     path("matching/", views.matching, name="matching"),
     path("get_flashcards/", views.get_flashcards, name="get_flashcards"),
     path("update_results/", views.update_results, name="update_results"),
+    path("student_data/<int:id>/", views.student_data, name="student_data"),
 ]

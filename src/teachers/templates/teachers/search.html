@@ -3,15 +3,14 @@
 {% block title %}Flashcards - Search{% endblock %}
 
 {% block main %}
-    <p>Search</p>
-    <input type="search" id="global-search" name="query" placeholder="Search" value="{{ query }}" autofocus>
-    <div>
+    <input type="search" id="global-search" class="search" name="query" placeholder="Search" value="{{ query }}" autofocus>
+    <div class="search-tabs">
         <button class="tab active" data-tab="all">All</button>
         <button class="tab" data-tab="flashcards">Flashcards</button>
         <button class="tab" data-tab="students">Students</button> 
         <button class="tab" data-tab="decks">Decks</button>
     </div>
-    <ul id="search-results-flashcards" class="results" data-category="flashcards"></ul>
-    <ul id="search-results-students" class="results" data-category="students"></ul>
-    <ul id="search-results-decks" class="results" data-category="decks"></ul>
+    <table id="search-results-flashcards" class="results" data-category="flashcards"></table>
+    <table id="search-results-students" class="results" data-category="students"></table>
+    <table id="search-results-decks" class="results" data-category="decks"></table>
 {% endblock %}

@@ -3,15 +3,38 @@
 {% block title %}Flashcards - Students{% endblock %}
 
 {% block main %}
-    <p>Students</p>
-    <ul id="students-student">
-        {% for student in students %}
-            <li>
-                <a href="{% url 'teachers:student' student.user.id %}">{{ student }}</a>
-                <input type="checkbox" data-student-id="{{ student.user.id }}" class="student-checkbox" checked>
-            </li>
-        {% endfor %}
-    </ul>
-    <input type="search" id="students-search" name="query" placeholder="Search" value="{{ query }}" autofocus>
-    <ul id="search-results"></ul>
+    <h1>Students</h1>
+    <h2>{{ request.user.username }}</h2>
+    <table id="students-student">
+        <tbody>
+            {% for student in students %}
+                <tr>
+                    <td class="name">{{ student.user__username }}</td>
+                    <td class="score">
+                        <div class="
+                                    {% if student.score %}
+                                        {% if student.score < 25 %}score-low
+                                        {% elif student.score < 75 %}score-medium
+                                        {% elif student.score < 100 %}score-high
+                                        {% else %}score-perfect
+                                        {% endif %}
+                                    {% else %}
+                                        score-low
+                                    {% endif %}
+                                   ">
+                            {% if student.score %}
+                                {{ student.score }}%
+                            {% else %}
+                                0%
+                            {% endif %}
+                        </div>
+                    </td>
+                    <td class="view-progress"><a href="{% url 'teachers:student' student.user__id %}">View Progress</a></td>
+                    <td class="checkbox"><input type="checkbox" class="student-checkbox" data-student-id="{{ student.user__id }}" checked></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <input type="search" id="students-search" class="search" name="query" placeholder="Search students" value="{{ query }}">
+    <table id="search-results"></table>
 {% endblock %}

@@ -13,23 +13,54 @@
     </head>
 
     <body>
-        <nav>
-            <a href="{% url 'teachers:assignment' %}">Assignment</a>
-            <br>
-            <a href="{% url 'teachers:search' %}">Search</a>
-            <br>
-            <a href="{% url 'teachers:students' %}">Students</a>
-            <ul id="decks_list">
-                {% for deck in user_decks %}
-                    <li><a href="{% url 'teachers:deck' deck.id %}">{{ deck }}</a></li>
-                {% endfor %}
+        <nav class="sidebar">
+            <ul>
+                <div class="menu-buttons">
+                    <li>
+                        <a href="{% url 'teachers:assignment' %}">
+                            <span class="icon"><img src="{% static 'teachers/home-outline.svg' %}" alt="Home Outline"></span>
+                            <span class="text">Assignment</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'teachers:search' %}">
+                            <span class="icon"><img src="{% static 'teachers/search-outline.svg'%}" alt="Search Outline"></span>
+                            <span class="text">Search</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'teachers:students' %}">
+                            <span class="icon"><img src="{% static 'teachers/person-outline.svg' %}" alt="Person Outline"></span>
+                            <span class="text">Students</span>
+                        </a>
+                    </li>
+                </div>
+                <div class="deck-container">
+                    {% for deck in user_decks %}
+                        <li>
+                            <a href="{% url 'teachers:deck' deck.id %}" data-deck-id="{{ deck.id }}">
+                                <span class="icon"><img src="{% static 'teachers/menu-outline.svg' %}" alt="Menu Outline"></span>
+                                <span class="text">{{ deck }}</span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </div>
+                <div class="bottom">
+                    <form action="{% url 'teachers:new_deck' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">
+                            <span class="icon"><img src="{% static 'teachers/add-outline.svg' %}" alt="Add Outline"></span>
+                            <span class="text">New Deck</span>
+                        </button>
+                    </form>
+                    <li>
+                        <a href="{% url 'users:logout' %}">
+                            <span class="icon"><img src="{% static 'teachers/log-out-outline.svg' %}" alt="Log Out Outline"></span>
+                            <span class="text">Log Out</span>
+                        </a>
+                    </li>
+                </div>
             </ul>
-            <form action="{% url 'teachers:new_deck' %}" method="post">
-                {% csrf_token %}
-                <button type="submit">New Deck</button>
-            </form>
-            <a href="{% url 'users:logout' %}">Log Out</a>
-            <hr>
         </nav>
 
         <main>

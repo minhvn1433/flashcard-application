@@ -1,0 +1,266 @@
+/* Index page */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #b3b3b3;
+    border-radius: 3px;
+}
+
+body {
+    background-color: #f4f4f4;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: #ffffff;
+}
+
+nav h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #4255ff;
+    padding-left: 15px;
+    padding-right: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 500;
+    font-size: 1em;
+    margin-right: 30px;
+}
+
+nav a:hover {
+    color: #4255ff;
+}
+
+nav a:last-child {
+    margin-left: auto;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+}
+
+.progress-container {
+    padding: 20px;
+    width: 60%;
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+
+.progress-container li {
+    list-style: none;
+    font-size: 0.9em;
+    font-weight: 500;
+    padding: 8px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.score-low {
+    background-color: #ffe6e6;
+    border: none;
+    color: #c83e80;
+}
+
+.score-medium {
+    background-color: #ede2f6;
+    border: none;
+    color: #823abb;
+}
+
+.score-high {
+    background-color: #e2f1fa;
+    border: none;
+    color: #2875ad;
+}
+
+.score-perfect {
+    background-color: #e6ffe6;
+    border: none;
+    color: #32b2ab;
+}
+
+#studying-progress {
+    font-size: 20px;
+    color: #000000;
+}
+
+#studying-progress-score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 30px;
+    border-radius: 20px;
+}
+
+main table {
+    width: 60%;
+    border-collapse: separate;
+    margin: 40px 0px;
+}
+
+main table tr {
+    display: flex;
+    margin: 3px;
+}
+
+main table tr:nth-child(odd) {
+    background-color: #f4f4f4;
+    border-radius: 5px;
+}
+
+main table tr:hover {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+main table .image {
+    display: flex;
+    align-items: center;
+    width: 80px;
+    padding-left: 25px;
+}
+
+main table .image img {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+main table .front,
+main table .back,
+main table .state {
+    display: flex;
+    align-items: center;
+    height: 53px;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+main table .front {
+    width: 45%;
+    color: #000000;
+}
+
+main table .back {
+    width: 45%;
+    color: #7b7b7b;
+}
+
+main table .state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: 25px;
+}
+
+main table .state div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    width: 100px;
+    height: 30px;
+}
+
+/* Multiple choice question */
+.progress-bar {
+    width: 100%;
+    height: 15px;
+    position: fixed;
+    top: -5px;
+    left: 0;
+}
+
+.question-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #ffffff;
+    width: 1000px;
+    height: 600px;
+    border-radius: 20px;
+    padding: 50px;
+}
+
+.top-half {
+    display: flex;
+    justify-content: space-between;
+}
+
+.question-container img {
+    width: 250px;
+    height: 250px;
+    border-radius: 10px;
+}
+
+.multiple-choice-question{
+    font-weight: 500;
+}
+
+.bottom-half {
+    width: 100%;
+}
+
+.multiple-choice-label {
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.multiple-choice-answer {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.answer {
+    padding: 20px;
+    font-size: 16px;
+    text-align: left;
+    background-color: #ffffff;
+    border: 2px solid #f4f4f4;
+    border-radius: 10px;
+}
+
+.answer:hover {
+    border: 2px solid #b3b3b3;
+    cursor: pointer;
+}
+
+.continue-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4255ff;
+    border-radius: 5px;
+    margin-top: 15px;
+    cursor: pointer;
+    width: 100px;
+    height: 40px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: 500;
+}
