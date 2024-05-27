@@ -1,20 +1,80 @@
 {% extends "students/layout.html" %}
 
+{% load static %}
+
 {% block title %}Flashcards{% endblock %}
 
 {% block body %}
-    <a href="{% url 'students:multiple_choice' %}">Multiple Choice</a>
-    <br>
-    <a href="{% url 'students:true_false' %}">True False</a>
-    <br>
-    <a href="{% url 'students:writing' %}">Writing</a>
-    <br>
-    <a href="{% url 'students:matching' %}">Matching</a>
-    <hr>
-    <a href="{% url 'users:logout' %}">Log Out</a>
-    <div>Studying Progress {{ score }}%</div>
-    <div>New Cards: {{ new_cards }}</div>
-    <div>Still Learning: {{ still_learning }}</div>
-    <div>Almost Done: {{ almost_done }}</div>
-    <div>Mastered: {{ mastered }}</div>
+    <nav>
+        <h1>{{ student.user.username }}</h1>
+        <a href="{% url 'students:multiple_choice' %}">📚 Multiple Choice</a>
+        <a href="{% url 'students:true_false' %}">✅ True False</a>
+        <a href="{% url 'students:writing' %}">✏️ Writing</a>
+        <a href="{% url 'students:matching' %}">🧩 Matching</a>
+        <a href="{% url 'users:logout' %}">Log Out</a>
+    </nav>
+
+    <main>
+        <ul class="progress-container">
+            <li>
+                <div id="studying-progress">Studying Progress</div>
+                <div id="studying-progress-score" class="                                    
+                                                        {% if score %}
+                                                            {% if score < 25 %}score-low
+                                                            {% elif score < 75 %}score-medium
+                                                            {% elif score < 100 %}score-high
+                                                            {% else %}score-perfect
+                                                            {% endif %}
+                                                        {% else %}
+                                                            score-low
+                                                        {% endif %}
+                                                        ">{{ score }}%
+                </div>
+            </li>
+            <li id="new-cards" class="score-low">
+                <div>New Cards</div>
+                <div>{{ new_cards }}</div>
+            </li>
+            <li id="still-learning" class="score-medium">
+                <div>Still Learning</div>
+                <div>{{ still_learning }}</div>
+            </li>
+            <li id="almost-done" class="score-high">
+                <div>Almost Done</div>
+                <div>{{ almost_done }}</div>
+            </li>
+            <li id="mastered" class="score-perfect">
+                <div>Mastered</div>
+                <div>{{ mastered }}</div>
+            </li>
+        </ul>
+        <table>
+            {% for result in results %}
+                <tr>
+                    <td class="image">
+                        {% if result.flashcard.image %}
+                            <img src="{{ result.flashcard.image.url }}" alt="Flashcard Image">
+                        {% endif %}
+                    </td>
+                    <td class="front">{{ result.flashcard.front }}</td>
+                    <td class="back">{{ result.flashcard.back }}</td>
+                    <td class="state">
+                        <div class="
+                                    {% if result.state == 'New Cards' %}score-low
+                                    {% elif result.state == 'Still Learning' %}score-medium
+                                    {% elif result.state == 'Almost Done'%}score-high
+                                    {% else %}score-perfect
+                                    {% endif %}
+                                    ">
+                            {{ result.state }}
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </main>
+    <script>
+        let studentDataUrl = "{% url 'students:student_data' student.user.id %}";
+    </script>
+    <script src="{% static 'students/index.js' %}"></script>
 {% endblock %}

@@ -44,6 +44,8 @@ def index(request):
         request,
         "students/index.html",
         {
+            "student": student,
+            "results": results,
             "new_cards": new_cards,
             "still_learning": still_learning,
             "almost_done": almost_done,
@@ -111,3 +113,21 @@ def update_results(request):
                 continue
 
     return JsonResponse({"message": "Results updated successfully."})
+
+
+@login_required
+def student_data(request, id):
+    student = Student.objects.get(user=request.user)
+    results = Result.objects.filter(student=student)
+
+    new_cards = results.filter(state=Result.NEW_CARDS).count()
+    still_learning = results.filter(state=Result.STILL_LEARNING).count()
+    almost_done = results.filter(state=Result.ALMOST_DONE).count()
+    mastered = results.filter(state=Result.MASTERED).count()
+
+    return JsonResponse({
+        "new_cards": new_cards,
+        "still_learning": still_learning,
+        "almost_done": almost_done,
+        "mastered": mastered,
+    })

@@ -56,17 +56,21 @@ function displayQuestion() {
     question.numAttempts++;
 
     // Display the question
-    document.querySelector('#question').innerText = question.flashcard.flashcard__front;
+    document.querySelector('.multiple-choice-question').innerText = question.flashcard.flashcard__front;
     document.querySelector('img').src = question.flashcard.flashcard__image;
     for (let i = 0; i < 4; i++) {
         document.querySelector("#answer" + (i + 1)).innerText = question.answers[i];
     }
 
-    // Reset all answer buttons
+    // Reset all answer buttons and label text
     document.querySelectorAll('.answer').forEach(button => {
         button.disabled = false;
         button.style.backgroundColor = '';
+        button.style.color = '';
+        button.style.border = '';
     });
+    document.querySelector('.multiple-choice-label').innerText = 'Select the matching term';
+    document.querySelector('.multiple-choice-label').style.color = '';
 
     // Add event listener to each answer button
     document.querySelectorAll('.answer').forEach((button, i) => {
@@ -79,10 +83,17 @@ function displayQuestion() {
             let answer = question.answers[i];
             if (answer === question.flashcard.flashcard__back) {
                 // If answer is correct, change color to green, increase progress bar
-                button.style.backgroundColor = 'green';
+                button.style.backgroundColor = '#eef8f6';
+                button.style.color = '#59d4c5';
+                button.style.border = '2px solid #59d4c5';
+
                 questions = questions.filter(q => q.flashcard.flashcard__id !== question.flashcard.flashcard__id);
-                let progressBar = document.querySelector('#progressBar');
+                let progressBar = document.querySelector('.progress-bar');
                 progressBar.value += 1;
+
+                let multipleChoiceLabel = document.querySelector('.multiple-choice-label');
+                multipleChoiceLabel.innerText = "Nice work! That's some impressive stuff! 🎉";
+                multipleChoiceLabel.style.color = '#59d4c5';
 
                 // Algorithm to update flashcard state, similar to Leitner system
                 switch (question.flashcard.state) {
@@ -131,9 +142,19 @@ function displayQuestion() {
                 }
             } else {
                 // If answer is incorrect, change color to red
-                button.style.backgroundColor = 'red';
+                button.style.backgroundColor = '#f8efef';
+                button.style.color = '#fb9e9e';
+                button.style.border = '2px solid #fb9e9e';
+
                 let correctAnswerIndex = question.answers.indexOf(question.flashcard.flashcard__back);
-                document.querySelector("#answer" + (correctAnswerIndex + 1)).style.backgroundColor = 'green';
+                let correctAnswerButton = document.querySelector("#answer" + (correctAnswerIndex + 1));
+                correctAnswerButton.style.backgroundColor = '#eef8f6';
+                correctAnswerButton.style.color = '#59d4c5';
+                correctAnswerButton.style.border = '2px solid #59d4c5';
+
+                let multipleChoiceLabel = document.querySelector('.multiple-choice-label');
+                multipleChoiceLabel.innerText = "No worries, you're still learning.";
+                multipleChoiceLabel.style.color = '#fb9e9e';
             }
             
             // Show next question
@@ -163,39 +184,51 @@ function displaySuccess() {
 
     // Create a new main element for the success screen
     let successMain = document.createElement('main');
-
-    let congratsMessage = document.createElement('div');
-    congratsMessage.innerText = "Success! You've answered all questions.";
-    successMain.appendChild(congratsMessage);
-
     let score = (stillLearning.length / allFlashcards.length) * 25 + (almostDone.length / allFlashcards.length) * 75 + (mastered.length / allFlashcards.length) * 100;
-
-    let studyingProgressDiv = document.createElement('div');
-    studyingProgressDiv.innerText = `Studying Progress ${Math.floor(score)}%`;
-    successMain.appendChild(studyingProgressDiv);
-
-    let newCardsDiv = document.createElement('div');
-    newCardsDiv.innerText = `New Cards: ${newCards.length}`;
-    successMain.appendChild(newCardsDiv);
-
-    let stillLearningDiv = document.createElement('div');
-    stillLearningDiv.innerText = `Still Learning: ${stillLearning.length}`;
-    successMain.appendChild(stillLearningDiv);
-
-    let almostDoneDiv = document.createElement('div');
-    almostDoneDiv.innerText = `Almost Done: ${almostDone.length}`;
-    successMain.appendChild(almostDoneDiv);
-
-    let masteredDiv = document.createElement('div');
-    masteredDiv.innerText = `Mastered: ${mastered.length}`;
-    successMain.appendChild(masteredDiv);
-
-    let homeButton = document.createElement('a');
-    homeButton.href = indexUrl;
-    homeButton.innerText = "Home";
-    successMain.appendChild(homeButton);
-
+    let scoreClass = score ? (score < 25 ? 'score-low' : (score < 75 ? 'score-medium' : (score < 100 ? 'score-high' : 'score-perfect'))) : 'score-low';
+    let progressHTML = `
+        <ul class="progress-container">
+            <li>
+                <div id="studying-progress">You're doing great, keep going!</div>
+                <div id="studying-progress-score" class="${scoreClass}">${Math.floor(score)}%</div>
+            </li>
+            <li id="new-cards" class="score-low">
+                <div>New Cards</div>
+                <div>${newCards.length}</div>
+            </li>
+            <li id="still-learning" class="score-medium">
+                <div>Still Learning</div>
+                <div>${stillLearning.length}</div>
+            </li>
+            <li id="almost-done" class="score-high">
+                <div>Almost Done</div>
+                <div>${almostDone.length}</div>
+            </li>
+            <li id="mastered" class="score-perfect">
+                <div>Mastered</div>
+                <div>${mastered.length}</div>
+            </li>
+        </ul>
+        <a href="${multipleChoiceUrl}" class="continue-button">Continue</a>
+        <a href="${indexUrl}" class="continue-button">Home</a>
+    `;
+    progressHTML += 
+    successMain.innerHTML = progressHTML;
     document.body.appendChild(successMain);
+
+    // Calculate width
+    let containerWidth = document.querySelector('.progress-container').offsetWidth;
+    let fixedWidth = 120;
+    let newCardsWidth = newCards.length / allFlashcards.length * containerWidth * 0.7 + fixedWidth;
+    let stillLearningWidth = stillLearning.length / allFlashcards.length * containerWidth * 0.7 + fixedWidth;
+    let almostDoneWidth = almostDone.length / allFlashcards.length * containerWidth * 0.7 + fixedWidth;
+    let masteredWidth = mastered.length / allFlashcards.length * containerWidth * 0.7 + fixedWidth;
+    
+    // Apply width
+    document.querySelector('#new-cards').style.width = `${newCardsWidth}px`;
+    document.querySelector('#still-learning').style.width = `${stillLearningWidth}px`;
+    document.querySelector('#almost-done').style.width = `${almostDoneWidth}px`;
+    document.querySelector('#mastered').style.width = `${masteredWidth}px`;
     return;
 }
 

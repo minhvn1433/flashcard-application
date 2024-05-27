@@ -6,14 +6,22 @@
 
 {% block body %}
     <main>
-        <progress id="progressBar" value="0" max="7"></progress>
-        <br>
-        <img alt="Flashcard image"></img>
-        <p id="question"></p>
-        <button id="answer1" class="answer"></button>
-        <button id="answer2" class="answer"></button>
-        <button id="answer3" class="answer"></button>
-        <button id="answer4" class="answer"></button>
+        <progress class="progress-bar" value="0" max="7"></progress>
+        <div class="question-container">
+            <div class="top-half">
+                <div class="multiple-choice-question"></div>
+                <img alt="Flashcard image"></img>
+            </div>
+            <div class="bottom-half">
+                <div class="multiple-choice-label">Select the matching term</div>
+                <div class="multiple-choice-answer">
+                    <button id="answer1" class="answer"></button>
+                    <button id="answer2" class="answer"></button>
+                    <button id="answer3" class="answer"></button>
+                    <button id="answer4" class="answer"></button>
+                </div>
+            </div>
+        </div>
     </main>
 
     <script>
@@ -21,6 +29,7 @@
         let getFlashcardsUrl = "{% url 'students:get_flashcards' %}";
         let updateResultsUrl = "{% url 'students:update_results' %}";
         let indexUrl = "{% url 'students:index' %}";
+        let multipleChoiceUrl = "{% url 'students:multiple_choice' %}";
     </script>
     <script src="{% static 'students/multiple_choice.js' %}"></script>
 {% endblock %}
