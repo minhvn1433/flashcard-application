@@ -107,32 +107,99 @@ _Information of the application (numbers of pakage, files, size, line of code ..
 ## 5.1. Testing implemented features
 We use white box testing method for each types of user.
 - Student:
-  - Login: 
+    - Login: 
 
-| Input  | Output  | Result |
-|:------------- |:---------------:|:-------------:|
-|Registered student Username and Password    | Students view          | OK|
-  - Logout:
+        | Input  | Output  | Result |
+        |:------------- |:---------------:|:-------------:|
+        |Registered student Username and Password    | Students view          | OK|
+    - Logout:
 
-| Input  | Output  | Result |
-|:------------- |:---------------:|:-------------:|
-|Press the logout button on the home view| Logout and return to login screen| OK|
-  - Multiple choice:
+        | Input  | Output  | Result |
+        |:------------- |:---------------:|:-------------:|
+        |Press the logout button on the home view| Logout and return to login screen| OK|
+    - Multiple choice:
       - Select a correct/wrong answer:
 
-| Input  | Output  | Result |
-|:------------- |:---------------:|:-------------:|
-|Click on a correct/wrong answer| Display result and the right answer| OK|
-      - Recording result:
+        | Input  | Output  | Result |
+        |:------------- |:---------------:|:-------------:|
+        |Click on a correct/wrong answer| Display result and the right answer| OK|
+    
+    - Recording result:
+        Deck of 8 flashcards, the test answer is:
 
-| Input  | Output  | Result |
-|:------------- |:---------------:|:-------------:|
-|Deck of 8 flashcards, the test answer is:
-  - 1 two consecutive right answer
-  - 1 right answer and 1 wrong answer
-  - 2 wrong answer and 1 right answer
+        |Test number| ball | cat | jeans | fish | dog    | egg | apple | hust | Output: | Result: |
+        |:---------:|:---:|:---:|:-----:|:----:|:-------:|:---:|:-----:|:----:|:--------|:-------:|
+        |1          | XXO  | XXXO|O      |      | XXXXO  |O    |O      |XO    |NC: 1; SL: 3; AD: 4; M: 0| OK |
+        |2          | O    | XXXO|XXXO   | O    | O      |OO   |XO     |      |NC: 0; SL: 2; AD: 4; M: 2| Not OK ("egg" appeared twwice eventhough mastered) | 
+        |3          | O    |O    |O      | O    |O       |XO   |       |O     |NC: 0; SL: 0; AD: 2; M: 6| OK |
+        |4          | O    |XXO  |O      | O    |O       |O    |XXXO   |XXO   |NC: 0; SL: 1; AD: 2; M: 5| OK |
 
-|Test number| ball | cat | jeans | fish | dog | egg | apple | hust | Result: |
-|:----------:|:---:|:---:|:-----:|:----:|:---:|:---:|:-----:|:----:|:--------|
-|1 | XXO  | XXXO|O      |      | XXXXO  |O    |O            |XO    |NC: 1; SL: 3; AD: 4; M: 0|
-|2 | 
+* Deck of less than 4 flashcards show "undefined" as multiple choice answer.
+    
+    - View  result:
+
+        | Input  | Output  | Result |
+        |:------------- |:---------------:|:-------------:|
+        |Press the home button | Return to home and show current progress| OK|
+
+- Teacher:
+    - Login:
+
+        | Input  | Output  | Result |
+        |:------------- |:---------------:|:-------------:|
+        |Registered teacher Username and Password    | Teachers view          | OK|
+    
+    - Logout:
+
+        | Input  | Output  | Result |
+        |:------------- |:---------------:|:-------------:|
+        |Press the logout button on the home view| Logout and return to login screen| OK|
+    
+    - Assignment:
+        - Remove a flashcards from assignment:
+
+            | Input  | Output  | Result |
+            |:------------- |:---------------:|:-------------:|
+            |Deselect a flashcard| Remove flashcard from assigment| OK|
+        - Add a flashcards from assignment:
+
+            | Input  | Output  | Result |
+            |:------------- |:---------------:|:-------------:|
+            |Search a flashcard and press "Add"| Add flashcard to assigment| OK|
+
+    - Search:
+        - Search by All/Flashcards/Students/Decks:
+
+            | Input  | Output  | Result |
+            |:------------- |:---------------:|:-------------:|
+            |Select an option and type the keyword| Show related search result| OK|
+
+    - Students:
+        - View list of student and progress:
+            | Input  | Output  | Result |
+            |:------------- |:---------------:|:-------------:|
+            |Press "View Progress" button| Show corresponding student's progress| OK|
+        - Remove a student:
+
+            | Input  | Output  | Result |
+            |:------------- |:---------------:|:-------------:|
+            |Deselect a student| Remove student from the list| OK|
+
+    - Decks view and edit:
+
+      | Input  | Output  | Result |
+      |:------------- |:---------------:|:-------------:|
+      |Add or remove a flashcard from a deck| Remove flashcard from deck| OK|
+
+      | Input  | Output  | Result |
+      |:------------- |:---------------:|:-------------:|
+      |Delete a deck| Remove deck from the deck list| OK|
+
+      | Input  | Output  | Result |
+      |:------------- |:---------------:|:-------------:|
+      |Type the deck name and svae| Rename the deck | OK|
+
+
+      
+          
+          
