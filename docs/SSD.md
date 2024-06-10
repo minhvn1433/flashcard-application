@@ -27,8 +27,7 @@ Date created: 07-06-2024
     - [3.3. Graphical User Interface Demonstration](#33-graphical-user-interface-demonstration)
 - [4. User Manual](#4-user-manual)
     - [4.1. Installation instruction](#41-installation-instruction)
-    - [4.2. Objects and scope of use](#42-Objects-and-scope-of-use)
-    - [4.3. Usage](#43-usage)
+    - [4.2. Users and scope of use](#42-users-and-scope-of-use)
 - [5. Testing](#5-testing)
 
 ## 1. Introduction
@@ -47,37 +46,35 @@ analyzing the study process.
 
 ### 1.3. Requirement Analysis
 
-#### 1.3.1 Analysis the requirement 
-_Identify and establish the functionality by consultation with client, customers, and users. 
-(ROugh and verbal description of the requirement)_
+#### 1.3.1 Requirement description
 
-The client want to develop an flashcard application that includes two main functionality:
+The client want to develop an flashcard application that can operate in multiple kindergatens. A flashcard is esentially a two-sided card with image on the front and the english word for that image on the back. The application will includes two main functionality:
 - Management of the flashcards, which includes creat, store, remove  flashcards.
 - View each students result and adjust the frequency of the appearance of the falshcards accordingly.
-The application should be accessible on devices commonly used in kindergartens, such as tablets or dedicated learning stations
-through a web browser with internet access. 
+The application should be accessible on devices commonly used in kindergartens, such as tablets or dedicated learning stations through a web browser with internet access. 
 
 #### 1.3.2 Define and list the final requirements
-_Describe the functions that the system must perform. (List the description in a more technical way)_
-
-Three main user classes are: "Manager", "Teacher" and "Student". 
+The application must have a user identification system to diferentiate between three main user classes: 
+"Manager", "Teacher" and "Student". 
 - **Manager:** manages the overall application, creating new flashcards and managing user accounts.
-- **Teacher:** Views student result and identifies words that students find difficult as well as words that are
+- **Teacher:** Views student result, organized lesson and test/quiz base on a flashcards grouping system (deck, assignment ...) and identifies words that students find difficult as well as words that are
   easy to memorize.
 - **Student (End User):** Uses the application to learn new words through flashcards.
 
 System feature:
-- Login System
-- Manage Flashcards System
-- Flashcard Decks and Lessons/Tests Management System
-- Result Analysis System
-- Account Management System
-- External Interface Requirements
+- Login System.
+- Manage Flashcards System.
+- Flashcard Decks and Lessons/Tests Management System.
+- Result Analysis System.
+- Account Management System.
+- External Interface Requirements.
   
 #### 1.3.3 Modeling
-_Organize the requirements in a systematic and comprehensible manner (Use case diagram)_
+Identify the features and use cases of the application.
+![UseCase DiagramFC](https://github.com/minhvn1433/flashcard-application/assets/126134607/93aa512e-feb8-42c9-913f-b5255805ec3a)
 
 ### 1.4. Intended Audience and Reading Suggestions
+This document is intended for developers, project manager as well as the client's representative.
 
 ## 2. Software Design
 
@@ -88,21 +85,50 @@ _- Short description of the database_
 _insert sql table relation image_
 
 ### 2.3 Class design
-_detailed design of each class_
+
+![my_project_visualized](https://github.com/minhvn1433/flashcard-application/assets/126134607/fae808cd-a389-4be9-92c0-56a5f9d8ae13)
 
 ### 2.4 Graphical User Interface Design
 _describe the interface_
 
 ## 3. Application Demonstration
 ### 3.1. Library and Tools
+Programing languages:
+    - JavaScript (36.3%)
+    - Python (32.4%)
+Stylesheet language:
+    - CSS (13.1%)
+Markup language:
+    - HTML (18.2%)
+FrameWork:
+    - Django
 
 ### 3.2. Resulting Application
-_Information of the application (numbers of pakage, files, size, line of code ....)_
+The resulting application is approximately 750kb in size (sample data included).
 
+### 3.3. Graphical User Interface Demonstration
+Login screen:
+![image](https://github.com/minhvn1433/flashcard-application/assets/126134607/2e64252c-12cb-4a99-996c-68cae744fa35)
 
+Student home page:
+![image](https://github.com/minhvn1433/flashcard-application/assets/126134607/c24d6cdc-5be5-4c37-8e68-738ffd263f2e)
 
+Multiple choice test:
+![image](https://github.com/minhvn1433/flashcard-application/assets/126134607/4db4261e-be38-4007-80ad-97c4590ce051)
 
-# 5. Testing
+Result screen:
+![image](https://github.com/minhvn1433/flashcard-application/assets/126134607/aac2e378-c981-441a-8140-29fc8d1adf43)
+
+Teacher home page:
+![image](https://github.com/minhvn1433/flashcard-application/assets/126134607/c28061d9-3370-407b-a128-5e8d089ef6a4)
+
+## 4. User manual
+### 4.1. Installation instruction
+
+### 4.2. Users and scope of use
+Users: Educational institute managers, teachers, students.
+Scope of use: Kindergartens or personal use.
+## 5. Testing
 
 ## 5.1. Testing implemented features
 We use white box testing method for each types of user.
