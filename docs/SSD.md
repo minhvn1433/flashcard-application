@@ -9,7 +9,6 @@ Date created: 07-06-2024
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
-- [Revision History](#revision-history)
 - [1. Introduction](#1-introduction)
     - [1.1. Purpose](#11-purpose)
     - [1.2. Project Scope](#12-project-scope)
@@ -17,11 +16,8 @@ Date created: 07-06-2024
     - [1.4. Intended Audience and Reading Suggestions](#14-intended-audience-and-reading-suggestions)
 - [2. Software Design](#2-software-design)
     - [2.1. Architecture Design](#21-architecture-design)
-    - [2.2. Database Design](#22-database-design)
-    - [2.3. Feature Design](#23-feature-design)
-    - [2.4. Class Design](#24-class-design)
-    - [2.5. Graphical User Interface Design](#25-graphical-user-interface-design)
-- [3. Application Demonstration](#2-application-demonstration)
+    - [2.2. Graphical User Interface Design](#22-graphical-user-interface-design)
+- [3. Application Demonstration](#3-application-demonstration)
     - [3.1. Library and Tools](#31-library-and-tools)
     - [3.2. Resulting Application](#32-resulting-application)
     - [3.3. Graphical User Interface Demonstration](#33-graphical-user-interface-demonstration)
@@ -79,28 +75,28 @@ This document is intended for developers, project manager as well as the client'
 ## 2. Software Design
 
 ### 2.1. Architecture Design
-
-### 2.2 Database Design
-_- Short description of the database_
-_insert sql table relation image_
-
-### 2.3 Class design
-
+Model design diagram:
 ![my_project_visualized](https://github.com/minhvn1433/flashcard-application/assets/126134607/fae808cd-a389-4be9-92c0-56a5f9d8ae13)
 
-### 2.4 Graphical User Interface Design
-_describe the interface_
+### 2.2 Graphical User Interface Design
+Transition graph between interfaces:
+![Untitled Diagram drawio](https://github.com/minhvn1433/flashcard-application/assets/126134607/0635bd28-5956-47ff-b2d5-e07f4be11854)
+
 
 ## 3. Application Demonstration
+
 ### 3.1. Library and Tools
-Programing languages:
-    - JavaScript (36.3%)
-    - Python (32.4%)
-Stylesheet language:
+Programing languages: \
+    - JavaScript (36.3%) \
+    - Python (32.4%) 
+    
+Stylesheet language: \
     - CSS (13.1%)
-Markup language:
+    
+Markup language: \
     - HTML (18.2%)
-FrameWork:
+    
+FrameWork: \
     - Django
 
 ### 3.2. Resulting Application
@@ -110,7 +106,7 @@ The resulting application is approximately 750kb in size (sample data included).
 Login screen:
 ![image](https://github.com/minhvn1433/flashcard-application/assets/126134607/2e64252c-12cb-4a99-996c-68cae744fa35)
 
-Student home page:
+Student's home page:
 ![image](https://github.com/minhvn1433/flashcard-application/assets/126134607/c24d6cdc-5be5-4c37-8e68-738ffd263f2e)
 
 Multiple choice test:
@@ -119,8 +115,17 @@ Multiple choice test:
 Result screen:
 ![image](https://github.com/minhvn1433/flashcard-application/assets/126134607/aac2e378-c981-441a-8140-29fc8d1adf43)
 
-Teacher home page:
+Teacher's home page:
 ![image](https://github.com/minhvn1433/flashcard-application/assets/126134607/c28061d9-3370-407b-a128-5e8d089ef6a4)
+
+Teacher's search page:
+![image](https://github.com/minhvn1433/flashcard-application/assets/126134607/60f3408f-83da-4e11-9d34-a9acf6f601b7)
+
+Teacher's student page:
+![image](https://github.com/minhvn1433/flashcard-application/assets/126134607/e5bebb44-9096-444e-9367-f2c9ce6f951c)
+
+Teacher's decks page:
+![image](https://github.com/minhvn1433/flashcard-application/assets/126134607/6a8837b6-f2b0-4ed4-9c73-5ad7ecd9112f)
 
 ## 4. User manual
 ### 4.1. Installation instruction
